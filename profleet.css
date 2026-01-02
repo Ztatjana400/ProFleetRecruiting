@@ -816,4 +816,19 @@ section {
     }
 }
 
+@media (max-width: 768px) {
+    .site-footer .footer-content {
+        max-width: 100%;       /* take full width */
+        margin: 0;             /* remove any auto margin */
+        padding: 0 15px;       /* small padding on sides */
+        text-align: center;    /* center text on mobile */
+        box-sizing: border-box;
+    }
+
+    .site-footer .social-icons {
+        justify-content: center; /* center social icons */
+        margin: 0 auto;
+    }
+}
+
 
