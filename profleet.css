@@ -564,7 +564,7 @@ section {
     border-radius: 8px;
     border: 1px solid #555;
     background: #e7e9f0f1; /*input text background*/
-    color: #fff;
+    color: #070707;
     font-size: 16px;
 }
 
@@ -794,4 +794,5 @@ section {
     width: 100%;
   }
 }
+
 
