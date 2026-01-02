@@ -1,0 +1,688 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* HEADER */
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 65px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 30px;
+    box-sizing: border-box;
+
+    backdrop-filter: blur(2px);
+    background: rgba(33,36,42,0.2);
+    transition: background-color 0.3s ease;
+
+    z-index: 1000;
+
+    color: white;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    #about-us {
+        scroll-margin-top: 100px; /* match mobile header height */
+    }
+}
+
+.header.scrolled {
+    background: #1c1f26b2;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+}
+
+/* NAV BAR */
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap; /
+}
+
+/* NAV LINKS */
+.nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+
+/* NAV BUTTONS */
+/* -------------------- BUTTON HOVER EFFECT -------------------- */
+.nav .nav_btn {
+    background-color: #e1c7b40e;
+    padding: 8px 16px;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: background-color 0.5s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* NAV BUTTONS/HOVER */
+.nav .nav_btn:hover {
+    background-color: #d17f03;
+    transform: scale(1.08);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+/* -------------------- ZOOM IMAGE EFFECT -------------------- */
+.zoom-image {
+    width: 100%;
+    max-width: 600px;
+    transform: scale(1.4);
+    transition: transform 1s ease;
+    display: block;
+    margin: 0 auto;
+}
+
+.zoom-image.visible {
+    transform: scale(1);
+}
+
+/*HEADER-LEFT/COMPANY NAME*/
+.company {
+    font-weight: 700;
+    font-size: 27px;
+    letter-spacing: 0.5px;
+    display: flex;       /* flex container for image + text */
+    gap: -100px;           /* space between image and text */
+}
+
+/* SECTION 1/TRUCK IMG*/
+/* -------------------- PARALLAX BACKGROUND -------------------- */
+.overimage {
+    height: 100vh;
+    background-image: url("PFRimages/truck_new_background.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* parallax effect */
+    position: relative;
+}
+
+@media (max-width: 768px) {
+    .overimage {
+        background-attachment: scroll;
+    }
+}
+
+/* DARK OVERLAY ON TRUCK IMG */
+.overimage::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* OVER TRUCK IMG TEXT (Recruiting Company Truck Drivers Enjoy...) */
+/* Hero overlay container */
+.overimage-overlay {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #F7F2EE;
+    text-align: center;
+}
+
+/* h1 + p animation */
+.overimage-overlay h1,
+.overimage-overlay p {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeSlide 1s forwards;
+}
+
+/* Stagger delay */
+.overimage-overlay h1 {
+    animation-delay: 0.3s;
+    font-size: clamp(28px, 5vw, 48px); /* min 28px, max 48px */
+    margin-bottom: 14px;
+}
+
+.overimage-overlay p {
+    animation-delay: 0.6s;
+    font-size: clamp(16px, 3vw, 27px); /* min 16px, max 27px */
+    margin-top: 0;
+    max-width: 1000px;
+}
+
+/* Animation keyframes */
+@keyframes fadeSlide {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/*---------------------------------------------------------------------------------------------------------------------------*/
+
+/* SECTION 2 (Professional... + Reliable... + COLORED BOXES */
+.content {
+    max-width: 100%;          
+    margin: 100px auto;        /* space from top & bottom */
+    padding: 0;           /* side padding */
+    text-align: center;
+    color: #161629;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+/* SECTION 2 (Professional...) */
+.content .below-img {
+    font-size: 2.2rem;
+    margin-bottom: 16px;
+}
+
+/* SECTION 2 (Reliable.Safe.Nationwide.) */
+.content .paragraph-1 {
+    font-size: 1rem;
+    color: #9ca3af;
+}
+
+/* COLORED BLOCKS CONTAINER */
+.color-blocks {
+    position: relative;
+    max-width: 1200px;
+    display: flex;
+    gap: 30px;
+    margin: 50px auto;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: stretch;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+/* BASE STYLE FOR ALL COLORED BOXES */
+.color-blocks > div {
+    flex: 1 1 250px;
+    max-width: 300px;
+    padding: 24px 22px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+    
+    border: 1px solid rgba(255,255,255,0.1);
+    background: linear-gradient(145deg, #fff, #f0f0f0);
+    border-radius: 15px;
+    transition: transform 0.4s, box-shadow 0.4s;
+}
+
+/* TEXT INSIDE COLORED BOXES */
+.color-blocks h3 {
+    margin-bottom: 14px;
+    color: #161629;
+    align-self: center;
+}
+
+.color-blocks p {
+    color: #161629;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+/* INDIVIDUAL COLORS */
+.color-box-1, .color-box-2, .color-box-3 { 
+    background-color: #dbd8d8; 
+} 
+
+/* HOVER EFFECT/COLORED BOXES */
+.color-blocks > div:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/*---------------------------------------------------------------------------------------------------------------------------*/
+
+/* SECTION 3 */
+.image-text-block {
+    background-image: url(PFRimages/dark-theme2.jpg);
+    background-position: left;
+    padding: 35px 20px;
+    font-size: 30px;
+    font-family: 'Roboto', Arial, sans-serif;
+    border-radius: 10px;
+}
+
+.about-us-image-text-block {
+    background-color: rgb(239, 235, 229);
+    color: black;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+/* -------------------- IMAGE HOVER EFFECTS -------------------- */
+.image-text-block .image-container img,
+.section3 .image-container2 img {
+    border-radius: 5px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    max-width: 600px;
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.image-text-block .image-container img,
+.section3 .image-container1 img {
+    border-radius: 190px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    max-width: 600px;
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.image-text-block .image-container img:hover,
+.section3 .image-container1 img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.3);
+} 
+
+.image-text-block .image-container img:hover,
+.section3 .image-container2 img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.3);
+}
+
+.benefits-p2 {
+    color: white;
+    font-size: 30px;
+
+}
+.image-text-block .text-container {
+    margin: 0; /* remove fixed margin */
+    padding: 0 20px;
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 30px;
+}
+
+.image-text-block .text-container-about-us {
+    margin: 0; /* remove fixed margin */
+    padding: 0 20px;
+}
+
+@media (min-width: 992px) {
+    .image-text-block .text-container,
+    .image-text-block .text-container-about-us {
+        padding: 0 80px; /* larger padding for desktop */
+    }
+}
+
+.image-text-block .text-container h3 {
+    margin: 0 0 15px;
+    padding: 0;
+    padding-left: 80px;
+    font-size: 24px;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+.image-text-block .text-container p {
+    margin: 0 0 20px;
+    padding-left: 45px;
+    font-family: 'Roboto', Arial, sans-serif;
+    border-radius: 10px;
+}
+
+/* BENEFITS */
+.benefits {
+    font-size: 28px;
+    color: white;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+.about-us {
+    font-size: 30px;
+    color: black;
+    font-family: 'Roboto', Arial, sans-serif;
+    margin-left: 100px;
+}
+
+.about {
+    font-size: 24px;
+    max-width: 1000px;
+    margin-left: 100px;
+}
+
+.image-container1 {
+    max-width: 350px;
+    margin-left: 50px;
+} 
+
+.image-container2 {
+    max-width: 600px;
+    margin-left: 50px;
+} 
+
+.benefits-list {
+    margin-top: 20px; /* space above the list */
+    padding-left: 50%; /* optional for indentation */
+    padding: 5px;
+    font-size: 24px;
+    position: relative;
+    color: white;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+@media (max-width: 768px) {
+  .benefits-list {
+    font-size: 24px;
+  }
+}
+.about-us-list {
+    margin-top: 20px; /* space above the list */
+    padding-left: 40px; /* optional for indentation */
+    padding: 5px;
+    font-size: 24px;
+    position: relative;
+}
+
+.benefits-p {
+    margin-bottom: 20px;
+    font-size: 24px;     /* ~24px */
+    max-width: 1200px;      /* prevents very long lines */
+    color: #F5F7FA;
+    padding: 5px;
+    position: relative;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+.about-us-p {
+    margin-bottom: 20px;    
+    max-width: 600px;      /* prevents very long lines */
+    color: #f0e9e9;
+    padding: 5px;
+    font-size: 30px;
+    position: relative;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+.image-text-block2-coverage {
+    display: flex;
+    max-width: 100%;
+    gap: 40px;               /* space between image and text */
+    padding: 40px 30px;      /* 10px from left and right, 60px top/bottom */
+    flex-wrap: wrap;          /* responsive wrap */
+    border-radius: 12px;
+    background-image: url(PFRimages/dark-theme2.jpg);
+    background-position: left;
+} 
+
+.image-text-block2-coverage .image-container2 img {
+    max-width: 600px;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    font-size: 26px;
+    font-family: 'Roboto', Arial, sans-serif;
+
+    border-radius: 10px;
+     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
+}
+
+.image-text-block2-coverage .text-container2-coverage {
+    flex: 1;                 
+    font-size: 24px;
+    margin-top: 80px;
+}
+
+.image-text-block2-coverage .text-container h3 {
+    font-size: 26px;
+    margin-bottom: 15px;
+    color: #e5e7eb;
+    align-items: flex-start;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+.image-text-block2 .about-us-text-container h3 {
+    font-size: 26px;
+    margin-bottom: 15px;
+    color: #f0ebeb;
+    align-items: flex-start;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+/*SECTION DIVs*/
+.section2 {
+    display: flex;
+    min-height: 100vh; 
+    background-color: rgb(229, 233, 229);
+}
+
+.section3 {
+    color: #0f0f0f;   
+    display: flex;
+    align-items: center;   /* 🔑 correct vertical alignment */
+    gap: 50px;
+    padding: 80px 60px;
+    min-height: 100vh;
+    box-sizing: border-box;
+    border-radius: 20px;
+ 
+}
+
+.section4 {
+    display: flex;
+    min-height: 100vh;
+    background-color: rgb(15, 29, 67);  
+    background-image: url(PFRimages/cream.jpg);
+    background-position: center; 
+}
+
+.section5 {
+    display: flex;
+    min-height: 100vh;   
+    background-color: #12141a; 
+    color: rgb(156, 204, 204);
+}
+
+#about-us {
+    scroll-margin-top: 80px; /* match header height */
+}
+
+@media (max-width: 768px) {
+.section3 {
+    flex-direction: column;
+    text-align: center;
+}
+
+.benefits-list {
+    padding-left: 0;
+    list-style-position: inside;
+  }
+}
+
+
+/* QUICK CONTACT FORM*/
+.quick-contact {
+    background-color: black;
+}
+
+.quick-contact-section {
+    display:block;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    position:relative;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    background-image: url("PFRimages/road.png");
+    background-position: center;
+    color: rgb(17, 16, 16); /*privacy text*/
+    border-radius: 13px;
+    text-align: center;
+    font-family: 'Roboto', Arial, sans-serif;
+    max-width: 700px;
+}
+
+.quick-contact-section h2 {
+    color: black;
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.quick-contact-section p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: black;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+.quick-contact-section form {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    color: black;
+}
+
+.quick-contact-section input,
+.quick-contact-section textarea {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #555;
+    background: #e7e9f0f1; /*input text background*/
+    color: #fff;
+    font-size: 16px;
+}
+
+.quick-contact-section input:focus,
+.quick-contact-section textarea:focus {
+    outline: 1px solid #402701;
+}
+
+.quick-contact-section button {
+    padding: 14px;
+    background: #e4a401;
+    color: #000;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.quick-contact-section button:hover {
+    background: #b86f01;
+    color: #e3dede;
+}
+
+/* FOOTER */
+.site-footer {
+    background: #1C1F26;
+    color: #E5E7EB; /* soft white text */
+    padding: 30px 20px;
+    text-align: center;
+    font-size: 14px; 
+    font-family: 'Roboto', Arial, sans-serif;
+ 
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    
+}
+
+.site-footer .footer-content {
+    width: 100%; 
+    max-width: 1200px; /* optional for content alignment */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.site-footer .footer-links {
+    margin-top: 10px;
+}
+
+.site-footer .footer-links a {
+    color: #E5E7EB;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.site-footer .footer-links a:hover {
+    color: #B85C3D; /* accent color */
+    text-decoration: underline;
+}
+
+/* SOCIAL ICONS */
+.social-icons {
+    display: flex;
+    justify-content: center; /* center horizontally */
+    align-items: center;     /* center vertically */
+    gap: 18px;
+    margin-bottom: 10px;     /* optional spacing from bottom */
+    position: relative;      /* keep relative for any additional positioning */
+}
+
+/* Base style for links */
+.social-icons a {
+    text-decoration: none;
+    font-size: 26px;
+    transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+/* Facebook color */
+.social-icons a .fa-facebook {
+    color: #1877F2;
+}
+
+/* Instagram gradient fill */
+.instagram-icon {
+    background: radial-gradient(
+        circle at 30% 30%,
+        #feda75,
+        #fa7e1e,
+        #d62976,
+        #962fbf,
+        #4f5bd5
+    );
+    background-clip: text;
+    -webkit-background-clip: text; /* Safari support */
+    color: transparent;
+}
+
+/* Hover effect */
+.social-icons a:hover {
+    transform: scale(1.10) translateY(-3px);
+    filter: drop-shadow(0 6px 12px rgba(0,0,0,0.25));
+}
+
+.zoom-image {
+  width: 100%;
+  max-width: 500px;
+  transform: scale(1.2); /* start zoomed in */
+  transition: transform 1s ease; /* 1 second animation */
+  display: block;
+  margin: 0 auto;
+}
+.zoom-image.visible {
+  transform: scale(1); /* final normal size */
+}
