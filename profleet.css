@@ -795,3 +795,26 @@ section {
   }
 }
 
+/* Mobile adjustments for text-container */
+@media (max-width: 768px) {
+    .image-text-block .text-container {
+        padding-left: 10px;   /* reduce left padding */
+        padding-right: 10px;  /* reduce right padding */
+        width: 100%;          /* make text use more horizontal space */
+        box-sizing: border-box; /* include padding in width */
+    }
+
+    .image-text-block .benefits,
+    .image-text-block .benefits-p,
+    .image-text-block .benefits-list {
+        font-size: 22px; /* optional: slightly smaller font for mobile */
+    }
+
+    .image-text-block .benefits-p,
+    .image-text-block .benefits-list {
+        padding-left: 15px; /* make bullets start aligned nicely */
+    }
+}
+
+
+
