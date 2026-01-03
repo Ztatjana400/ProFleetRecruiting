@@ -11,11 +11,6 @@ html {
     scroll-behavior: smooth;
 }
 
-section {
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
 /* HEADER */
 .header {
     position: fixed;
@@ -43,14 +38,23 @@ section {
 }
 
 .inner {
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0;
 }
 
 .header.scrolled {
     background: #1c1f26b2;
     box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+}
+
+/*HEADER-LEFT/COMPANY NAME*/
+.company {
+    font-weight: 700;
+    font-size: 27px;
+    letter-spacing: 0.5px;
+    display: flex;       /* flex container for image + text */
+    gap: 20px;           /* space between image and text */
 }
 
 /* NAV BAR */
@@ -73,7 +77,6 @@ section {
 }
 
 /* NAV BUTTONS */
-/* -------------------- BUTTON HOVER EFFECT -------------------- */
 .nav .nav_btn {
     background-color: #e1c7b40e;
     padding: 8px 16px;
@@ -89,7 +92,7 @@ section {
     box-shadow: 0 6px 20px rgba(0,0,0,0.3);
 }
 
-/* -------------------- ZOOM IMAGE EFFECT -------------------- */
+/*SECTION 5 - ZOOM EARTH IMAGE*/
 .zoom-image {
     width: 100%;
     max-width: 600px;
@@ -103,37 +106,46 @@ section {
     transform: scale(1);
 }
 
-/*HEADER-LEFT/COMPANY NAME*/
-.company {
-    font-weight: 700;
-    font-size: 27px;
-    letter-spacing: 0.5px;
-    display: flex;       /* flex container for image + text */
-    gap: -100px;           /* space between image and text */
-}
-
 /* SECTION 1/TRUCK IMG*/
 /* -------------------- PARALLAX BACKGROUND -------------------- */
-.overimage {
+/* .overimage {
     height: 100vh;
     background-image: url("PFRimages/truck_new_background.png");
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* parallax effect */
+    background-attachment: fixed; /* parallax effect 
     position: relative;
+} */
+
+/*----------------------------------------- VIDEO (SECTION 1) -----------------------------------------------------------*/
+.overvideo {
+    position: relative;
+    height: 100vh;        /* full screen */
+    width: 100%;
+    overflow: hidden;
 }
 
-/* DARK OVERLAY ON TRUCK IMG */
-.overimage::before {
-    content: "";
+.hero-video-container {
     position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;         /* slightly taller for parallax */
+    overflow: hidden;
+    z-index: 0;           /*video behind everything*/
 }
 
-/* OVER TRUCK IMG TEXT (Recruiting Company Truck Drivers Enjoy...) */
-/* Hero overlay container */
-.overimage-overlay {
+.hero-media {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: translateY(0);
+    transition: transform 0.1s linear;
+}
+
+/* VIDEO / OVERLAY YEXT */
+.overvideo-overlay {
     position: relative;
     z-index: 1;
     height: 100%;
@@ -145,22 +157,33 @@ section {
     text-align: center;
 }
 
-/* h1 + p animation */
-.overimage-overlay h1,
-.overimage-overlay p {
+/* VIDEO / OVERLAY SHADE */
+.overlay-shade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* semi-transparent black shade */
+    z-index: 1; /* above video, below text */
+}
+
+/* VIDEO / OVERLAY TEXT h1 + p animation */
+.overvideo-overlay h1,
+.overvideo-overlay p {
     opacity: 0;
     transform: translateY(30px);
     animation: fadeSlide 1s forwards;
 }
 
 /* Stagger delay */
-.overimage-overlay h1 {
+.overvideo-overlay h1 {
     animation-delay: 0.3s;
     font-size: clamp(28px, 5vw, 48px); /* min 28px, max 48px */
     margin-bottom: 14px;
 }
 
-.overimage-overlay p {
+.overvideo-overlay p {
     animation-delay: 0.6s;
     font-size: clamp(16px, 3vw, 27px); /* min 16px, max 27px */
     margin-top: 0;
@@ -174,61 +197,65 @@ section {
         transform: translateY(0);
     }
 }
-/*---------------------------------------------------------------------------------------------------------------------------*/
 
-/* SECTION 2 (Professional... + Reliable... + COLORED BOXES */
-.content {
-    max-width: 100%;          
-    margin: 100px auto;        /* space from top & bottom */
-    padding: 0;           /* side padding */
+/*--------------------------------- SECTION 2 & 6: Professional / Reliable + Colored Boxes -------------------------------*/
+
+/* Main container */
+.section2and6 {
+    max-width: 100%;
+    margin: 100px auto;
+    padding: 0;
     text-align: center;
     color: #161629;
     font-family: 'Roboto', Arial, sans-serif;
 }
 
-/* SECTION 2 (Professional...) */
-.content .below-img {
+/* Text below image */
+.section2and6 .below-img {
     font-size: 2.2rem;
     margin-bottom: 16px;
 }
 
-/* SECTION 2 (Reliable.Safe.Nationwide.) */
-.content .paragraph-1 {
+/* Subtitle / paragraph */
+.section2and6 .paragraph-1 {
     font-size: 1rem;
     color: #9ca3af;
 }
 
-/* COLORED BLOCKS CONTAINER */
+/*--------------------------------------- COLORED BOXES CONTAINER ------------------------------------------------------*/
 .color-blocks {
     position: relative;
-    max-width: 1200px;
+    max-width: 100%;
+    margin: 50px 0;
+    padding: 0 20px;
     display: flex;
     gap: 30px;
-    margin: 50px auto;
     justify-content: center;
     flex-wrap: wrap;
     align-items: stretch;
     font-family: 'Roboto', Arial, sans-serif;
 }
 
-/* BASE STYLE FOR ALL COLORED BOXES */
+/*--------------------------------------- INDIVIDUAL COLORED BOXES ------------------------------------------------------*/
 .color-blocks > div {
     flex: 1 1 250px;
     max-width: 300px;
     padding: 24px 22px;
-    border-radius: 8px;
+    border-radius: 15px;
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s ease;
-    
-    border: 1px solid rgba(255,255,255,0.1);
-    background: linear-gradient(145deg, #fff, #f0f0f0);
-    border-radius: 15px;
     transition: transform 0.4s, box-shadow 0.4s;
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: linear-gradient(145deg, #fff, #f0f0f0);
+
+    /* shine effect setup */
+    position: relative;
+    overflow: hidden;
 }
 
-/* TEXT INSIDE COLORED BOXES */
+/* Text inside colored boxes */
 .color-blocks h3 {
     margin-bottom: 14px;
     color: #161629;
@@ -241,22 +268,59 @@ section {
     margin-bottom: 10px;
     padding-bottom: 10px;
     text-align: center;
+    position: relative;
+    z-index: 1; /* text above shine */
 }
 
-/* INDIVIDUAL COLORS */
-.color-box-1, .color-box-2, .color-box-3 { 
-    background-color: #dbd8d8; 
-} 
-
-/* HOVER EFFECT/COLORED BOXES */
+/* Hover effect for box */
 .color-blocks > div:hover {
     transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-/*---------------------------------------------------------------------------------------------------------------------------*/
+/*------------------------------------------ SHINE EFFECT (on hover) ----------------------------------------------------*/
+.color-blocks > div::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%; /* start off to the left */
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        rgba(255,255,255,0) 0%,
+        rgba(255,255,255,0.6) 50%,
+        rgba(255,255,255,0) 100%
+    );
+    transform: skewX(-25deg);
+    z-index: 2;
+    pointer-events: none; /* do not block hover */
+}
 
-/* SECTION 3 */
+/* Animate shine on hover */
+.color-blocks > div:hover::before {
+    animation: shineMove 1s forwards; /* forwards keeps it at the end */
+}
+
+/* Keyframes for shine */
+@keyframes shineMove {
+    0% { left: -150%; }
+    100% { left: 150%; }
+}
+
+/*-------------------------------------- GENERAL SECTION STYLING --------------------------------------------------------*/
+.section2and6,
+.section3,
+.image-text-block,
+.image-text-block2-coverage {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*---------------------------------------------- SECTION 3 --------------------------------------------------------------*/
+
 .image-text-block {
     background-image: url(PFRimages/dark-theme2.jpg);
     background-position: left;
@@ -272,10 +336,11 @@ section {
     font-family: 'Roboto', Arial, sans-serif;
 }
 
-/* -------------------- IMAGE HOVER EFFECTS -------------------- */
+/* ----------------------------------------------- IMAGE HOVER EFFECTS ------------------------------------------------ */
+
 .image-text-block .image-container img,
-.section3 .image-container2 img {
-    border-radius: 5px;
+.section3 .image-container1 img {
+    border-radius: 190px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     max-width: 600px;
     width: 100%;
@@ -285,8 +350,8 @@ section {
 }
 
 .image-text-block .image-container img,
-.section3 .image-container1 img {
-    border-radius: 190px;
+.section3 .image-container2 img {
+    border-radius: 5px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     max-width: 600px;
     width: 100%;
@@ -325,6 +390,8 @@ section {
     padding: 0 20px;
 }
 
+
+
 .image-text-block .text-container h3 {
     margin: 0 0 15px;
     padding: 0;
@@ -360,6 +427,21 @@ section {
     /* margin-left: 100px; */
 }
 
+.image-container {
+    width: 400px;           /* current width */
+    margin-left: auto;       /* ✅ centers horizontally */
+    margin-right: auto;      /* ✅ centers horizontally */
+    display: block;          /* ensures it can be centered */
+}
+
+@media (max-width: 1200px) {
+    .image-container1 {
+        width: 70%;          /* or 80% for tablets/mobile */
+        max-width: 350px;    /* prevent it from being too big */
+    }
+}
+
+
 .image-container1 {
     max-width: 350px;
     /* margin-left: 50px; */
@@ -394,6 +476,16 @@ section {
 .image-container2 {
     margin-left: auto;
     margin-right: auto;
+}
+
+.image-container1 {
+    width: 300px;
+}
+
+@media (max-width: 768px) {
+    .image-container1 {
+        width: 80%;  /* or any % that fits mobile screens */
+    }
 }
 
 .benefits-p,
@@ -434,7 +526,7 @@ section {
     display: flex;
     max-width: 100%;
     gap: 40px;               /* space between image and text */
-    padding: 40px 30px;      /* 10px from left and right, 60px top/bottom */
+    padding: 40px;      /* 10px from left and right, 60px top/bottom */
     flex-wrap: wrap;          /* responsive wrap */
     border-radius: 12px;
     background-image: url(PFRimages/dark-theme2.jpg);
@@ -483,17 +575,42 @@ section {
 }
 
 .section3 {
-    color: #0f0f0f;   
     display: flex;
-    align-items: center;   /* 🔑 correct vertical alignment */
-    gap: 50px;
-    /* padding: 80px 60px; */
+    align-items: center;
+    justify-content: center; /* center image + text horizontally */
+    flex-wrap: wrap;         /* allow wrapping on smaller screens */
     min-height: 100vh;
+    max-width: 100%;
     box-sizing: border-box;
-    border-radius: 20px;
- 
 }
 
+/* ABOUT US - TEXT + LOGO */
+.about-us-image-text-block .section3 {
+    display: flex;
+    align-items: center;      /* vertical alignment */
+    justify-content: center; /* keep items close together */
+    gap: 20px;                /* space between text and logo */
+    flex-wrap: wrap;          /* allows stacking on small screens */
+}
+
+/* Text container */
+.text-container-about-us {
+    flex: 1 1 auto;             /* take available space */
+    max-width: 800px;           /* control width */
+    padding-left: 100px;         /* add some space from the left edge */
+    padding-right: 0;           /* keep right padding optional */
+    margin: 0;                  /* remove extra margins */
+    box-sizing: border-box;     /* ensure padding is included */
+    justify-content: center; /* keep items close together */
+}
+
+/* Logo container */
+.image-container1 {
+    flex: 0 0 auto;           /* logo stays at natural width */
+    max-width: 300px;         /* optional max width */
+}
+
+ 
 .section4 {
     display: flex;
     min-height: 100vh;
@@ -502,6 +619,9 @@ section {
     background-position: center; 
 }
 
+.inner-background {
+    background-image: url(PFRimages/cream.jpg);
+}
 .section5 {
     display: flex;
     min-height: 100vh;   
@@ -534,18 +654,20 @@ section {
     text-align: center;
     font-family: 'Roboto', Arial, sans-serif;
     max-width: 700px;
+
 }
 
 .quick-contact-section h2 {
-    color: black;
+    color: rgb(36, 22, 8);
     font-size: 36px;
     margin-bottom: 15px;
+    text-shadow: rgb(8, 6, 6);
 }
 
 .quick-contact-section p {
     font-size: 18px;
     margin-bottom: 30px;
-    color: black;
+    color: rgb(252, 251, 251);
     font-family: 'Roboto', Arial, sans-serif;
 }
 
@@ -555,7 +677,7 @@ section {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    color: black;
+    color: rgb(252, 251, 251);
 }
 
 .quick-contact-section input,
@@ -563,14 +685,14 @@ section {
     padding: 12px;
     border-radius: 8px;
     border: 1px solid #555;
-    background: #e7e9f0f1; /*input text background*/
-    color: #070707;
+    background: #e7e9f0; /*input text background*/
+    color: #1e1e1e;
     font-size: 16px;
 }
 
 .quick-contact-section input:focus,
 .quick-contact-section textarea:focus {
-    outline: 1px solid #402701;
+    outline: 1px solid #a19c9c;
 }
 
 .quick-contact-section button {
@@ -579,14 +701,21 @@ section {
     color: #000;
     font-weight: bold;
     border: none;
-    border-radius: 8px;
+    border-radius: 26px;
+    width: 200px;
+    text-align: center;
+    margin: 0 auto;
     cursor: pointer;
     font-size: 18px;
 }
 
 .quick-contact-section button:hover {
     background: #b86f01;
-    color: #060606;
+    color: rgb(252, 251, 251);
+}
+
+.privacy-notice {
+    color: rgb(248, 244, 236);
 }
 
 /* FOOTER */
@@ -831,4 +960,56 @@ section {
     }
 }
 
+/*VIDEO*/
+@media (max-width: 768px) {
+    .hero-video-container {
+        position: absolute; /* stay in flow */
+        width: 100%;
+        height: 100%;       /* adjust height for mobile */
+        overflow: hidden;
+    }
 
+    .hero-video-container video.hero-media {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;  /* cover the container */
+    }
+}
+
+@media (max-width: 768px) {
+    .overvideo-overlay {
+        padding: 0 15px;          /* prevent text from touching edges */
+        text-align: center;        /* center text */
+        z-index: 2;                /* above video */
+        color: #F7F2EE;            /* text color stays readable */
+    }
+
+    .overvideo-overlay h1 {
+        font-size: clamp(24px, 6vw, 40px); /* scale font for mobile */
+        text-shadow: 2px 2px 8px rgba(0,0,0,0.7); /* shadow for readability */
+    }
+
+    .overvideo-overlay p {
+        font-size: clamp(14px, 4vw, 22px); /* scale paragraph */
+        text-shadow: 1px 1px 6px rgba(0,0,0,0.6); /* shadow to read over video */
+        max-width: 90%; /* keep text inside screen */
+        margin: 0 auto; /* center text */
+    }
+}
+
+.section3,
+.image-text-block,
+.image-text-block2-coverage,
+.content {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.color-blocks {
+    max-width: 100%;
+    margin: 50px 0;
+    padding: 0 20px; /* optional */
+}
