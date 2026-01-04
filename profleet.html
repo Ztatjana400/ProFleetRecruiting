@@ -195,22 +195,40 @@
     <p>Fill out the form below and we'll get back to you as soon as possible!</p>
 
 
-      <form action="/api/submit" method="POST">
-      <input type="hidden" name="accessKey" value="f4c9e0e767e2dbc15cd6538d87bfc263534c68c93493fb8d275e6ef5a317d733">
+     
+    <form action="/server/api/submit" method="POST">
 
+  <!-- Replace with your actual Access Key -->
+  <input type="hidden" name="accessKey" value="f4c9e0e767e2dbc15cd6538d87bfc263534c68c93493fb8d275e6ef5a317d733">
 
-      <label for="full_name">Full Name</label>
-      <input type="text" name="full_name" placeholder="Full Name" required>
+  <!-- Name Field -->
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+  </div>
 
-      <label for="phone">Phone Number</label>
-      <input type="tel" name="phone" placeholder="Phone Number" required>
+  <!-- Email Field -->
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+  </div>
 
-      <label for="message">Message</label>
-      <textarea name="message" placeholder="Message" rows="5" required></textarea>
+  <!-- Message Field -->
+  <div class="form-group">
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" rows="4" required></textarea>
+  </div>
 
-      <button type="submit">Send Message</button>
+  <!-- Honeypot Spam Protection (leave empty and hidden) -->
+  <input type="text" name="honeypot" style="display:none;">
 
-    </form>
+  <!-- Optional: Webhook URL -->
+  <input type="hidden" name="webhookUrl" value="https://yourwebhook.url">
+
+  <!-- Submit Button -->
+  <button type="submit">Send Message</button>
+
+</form>
 
     <h5 class="privacy-notice">
       <em>We respect your privacy. <br>
@@ -270,6 +288,7 @@
 
   </body>
 </html>
+
 
 
 
