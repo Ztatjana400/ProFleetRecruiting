@@ -1535,20 +1535,21 @@ html {
   .social-icons a { font-size: 22px; }
 }
 
-/* ===== inside the 412×915 S24-Ultra portrait query ===== */
-/* --- centre ALL three pieces to the same width as .text-container-about-us --- */
-.overvideo-overlay,
-.image-text-block .image-container,   /* driver picture wrapper */
-.blur-list-section {                  /* the frosted list block */
+.image-text-block .image-container, 
+.blur-list-section {                  
     width: 90%;
-    max-width: 900px;                 /* same cap you liked */
+    max-width: 900px;               
     margin-left: auto;
     margin-right: auto;
     box-sizing: border-box;
 }
 
-/* driver image itself never grows bigger than the container */
 .image-text-block .image-container img {
     width: 100%;
     height: auto;
 }
+.overvideo-overlay {
+   width: 100%;
+   font-size: 15px;
+}
+
