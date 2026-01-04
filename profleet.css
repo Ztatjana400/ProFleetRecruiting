@@ -1005,3 +1005,90 @@ html {
     }
 }
 
+
+/* SAMSUNG */
+@media (max-width: 430px) {
+
+  /* GLOBAL SAFETY */
+  * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* HEADER */
+  .header {
+    padding: 10px 15px;
+  }
+
+  .company {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .nav {
+    gap: 8px;
+  }
+
+  /* TEXT CONTAINERS — MAJOR FIX */
+  .text-container,
+  .text-container-about-us,
+  .text-container2-coverage {
+    padding: 0 12px !important;
+    margin: 0 auto !important;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* REMOVE DESKTOP SHIFTS */
+  .text-container h1,
+  .text-container ul {
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  /* IMAGES */
+  .image-container,
+  .image-container1,
+  .image-container2 {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* SECTION 3 LAYOUT */
+  .section3 {
+    flex-direction: column;
+    padding: 30px 15px;
+  }
+
+  /* KILL TRANSLATE-X (BIG OVERFLOW CAUSE) */
+  .image-text-block .text-container {
+    transform: none !important;
+  }
+
+  /* COLOR BLOCKS */
+  .color-blocks {
+    padding: 0 10px;
+  }
+
+  /* COVERAGE SECTION */
+  .image-text-block2-coverage {
+    padding: 20px 12px;
+  }
+
+  /* QUICK FORM */
+  .quick-contact-section {
+    padding: 40px 15px;
+    max-width: 100%;
+  }
+
+  .quick-contact-section button {
+    width: 100%;
+  }
+}
+
