@@ -1319,4 +1319,128 @@ html {
 
 }
 
+/*--------------------------------- MOBILE: 360x650 ---------------------------------*/
+@media (max-width: 360px) and (max-height: 650px) {
+
+  /* Header */
+  .header {
+    flex-direction: column;
+    height: auto;
+    padding: 8px 10px;
+    background: rgba(28, 31, 38, 0.95);
+    backdrop-filter: blur(4px);
+  }
+
+  .company {
+    font-size: 18px;
+    margin-bottom: 6px;
+    white-space: nowrap;
+    text-align: center;
+  }
+
+  /* NAV buttons in one row */
+  .nav {
+    display: flex;
+    flex-direction: row; /* horizontal */
+    flex-wrap: nowrap;   /* do NOT wrap */
+    justify-content: center; /* center below company */
+    gap: 6px;            /* spacing between buttons */
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .nav a,
+  .nav .nav_btn {
+    display: inline-block;
+    width: auto;
+    font-size: 12px;
+    padding: 6px 10px;
+    white-space: nowrap;
+    text-align: center;
+  }
+
+  /* Body padding to avoid header overlap */
+  body {
+    padding-top: 100px;
+  }
+
+  /* Video section moved up */
+  .overvideo {
+    height: 100vh;
+    margin-top: 0;
+  }
+
+  /* Overlay text slightly left */
+  .overvideo-overlay {
+    padding-left: 5%;
+    padding-right: 5%;
+    text-align: center;
+  }
+
+  .overvideo-overlay h1 {
+    font-size: clamp(20px, 5vw, 28px);
+    margin-bottom: 10px;
+    transform: translateX(-5px); /* slightly left */
+  }
+
+  .overvideo-overlay p {
+    font-size: clamp(12px, 4vw, 18px);
+    max-width: 90%;
+    margin: 0 auto;
+    transform: translateX(-5px); /* slightly left */
+  }
+
+  /* Driver image and text container */
+  .section3 {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .image-container {
+    max-width: 250px;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .text-container {
+    max-width: 300px;
+    width: 90%;
+    margin: 15px auto 0;
+    text-align: center;
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+
+  /* Color blocks and benefits */
+  .color-blocks {
+    flex-direction: column;
+    gap: 15px;
+    padding: 0 10px;
+  }
+
+  /* Quick contact form */
+  .quick-contact-section {
+    padding: 30px 15px;
+    max-width: 90%;
+  }
+
+  .quick-contact-section button {
+    width: 100%;
+  }
+
+  /* Footer adjustments */
+  .site-footer .footer-content {
+    max-width: 100%;
+    padding: 0 10px;
+    text-align: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+}
+
 
