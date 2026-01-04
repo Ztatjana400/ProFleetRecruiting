@@ -1201,5 +1201,75 @@ html {
   .quick-contact-section button {
     width: 100%;
   }
+
+	/*---------------------------------------------MOBILE LANDSCAPE: 915 x 412 ----------------------------------------------*/
+@media (max-width: 915px) and (max-height: 430px) and (orientation: landscape) {
+
+  /* HEADER — tighter vertically */
+  .header {
+    height: 55px;
+    padding: 6px 12px;
+  }
+
+  .company {
+    font-size: 18px;
+    white-space: nowrap;
+  }
+
+  .nav {
+    gap: 6px;
+  }
+
+  .nav a {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+
+  /* HERO / ABOVE-THE-FOLD */
+  .hero,
+  .hero-media {
+    min-height: 100vh;
+  }
+
+  /* TEXT CONTAINERS */
+  .text-container,
+  .text-container-about-us,
+  .text-container2-coverage {
+    padding: 0 14px;
+    width: 100%;
+  }
+
+  .text-container h1 {
+    font-size: 22px;
+    line-height: 1.2;
+  }
+
+  /* STACK CONTENT (LESS VERTICAL SCROLL) */
+  .section3 {
+    flex-direction: column;
+    padding: 20px 15px;
+  }
+
+  /* IMAGES — PREVENT OVERFLOW */
+  img,
+  .image-container,
+  .image-container1,
+  .image-container2 {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* QUICK CONTACT */
+  .quick-contact-section {
+    padding: 30px 15px;
+  }
+
+  .quick-contact-section button {
+    width: 100%;
+  }
+
 }
+
+}
+
 /*-----------------------------------------------------------------------------------------------------------------------*/
