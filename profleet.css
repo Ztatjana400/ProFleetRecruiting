@@ -1261,21 +1261,21 @@ html {
   }
 
   /* ---------------- OVERLAY ---------------- */
-  .overvideo-overlay {
+.overvideo-overlay {
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
+    left: -10px;        /* << shift the overlay slightly left */
+    width: calc(100% + 20px); /* expand width to prevent clipping */
     height: 100%;
     z-index: 2;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;   /* << align content to start (left) */
+    text-align: left;          /* text aligns left inside overlay */
     color: #F7F2EE;
     padding: 0 15px;
-  }
+}
 
   .overvideo-overlay h1 {
     font-size: clamp(24px, 6vw, 40px);
@@ -1288,4 +1288,33 @@ html {
     max-width: 90%;
     margin: 0 auto;
   }
+
+	/* SECTION 3 - driver image + text block */
+.section3 {
+    flex-direction: column;      /* stack image and text vertically */
+    align-items: center;         /* center horizontally */
+    justify-content: center;
+    text-align: center;          /* text centered below image */
+    padding: 10px 15px;
 }
+
+/* driver image */
+.image-container {
+    width: 80%;                  /* scale down image to fit mobile */
+    max-width: 300px;            /* optional max width */
+    margin: 0 auto;              /* center image */
+}
+
+/* text next to image */
+.text-container {
+    width: 90%;                  /* make text fit inside screen */
+    max-width: 350px;            /* optional max width */
+    margin: 15px auto 0 auto;    /* center below image */
+    padding: 0 10px;             /* remove side overflow */
+    box-sizing: border-box;
+    text-align: center;          /* center text */
+    transform: none;             /* remove any translateX pushing it out */
+}
+
+}
+
