@@ -1405,16 +1405,17 @@ html {
   }
 }
 
+
 /* =========================================================
    Samsung Galaxy S24 Ultra  –  MOBILE-FIRST FIX
    1440 × 3120 px  |  19.5 : 9  |  512 ppi  |  portrait
    ========================================================= */
-@media only screen
+/* @media only screen
        and (device-width: 1440px)
        and (device-height: 3120px)
        and (-webkit-device-pixel-ratio: 3.5)
        and (orientation: portrait)
-       and (pointer: coarse) {
+       and (pointer: coarse) { */
 
   /* ---------- header (already perfect, just keep it) ---------- */
   .header {
@@ -1446,7 +1447,7 @@ html {
   }
 
   /* ---------- hero text – same centred width as .text-container-about-us ---------- */
-  .overvideo-overlay {
+  /* .overvideo-overlay {
       width: 100%;
       max-width: 900px;
       margin: 0 auto;
@@ -1455,7 +1456,7 @@ html {
   .overvideo-overlay h1 { font-size: 52px; }
   .overvideo-overlay p  { font-size: 26px; }
 
-  /* ---------- driver picture – same centred width ---------- */
+  /* ---------- driver picture – same centred width ---------- 
   .image-text-block .image-container {
       width: 100%;
       max-width: 900px;
@@ -1467,20 +1468,21 @@ html {
       border-radius: 30px;
   }
 
-  /* ---------- blur list – same centred width ---------- */
+  /* ---------- blur list – same centred width ---------- 
   .blur-list-section {
       width: 100%;
       max-width: 900px;
       margin: 40px auto;
-      padding: 40px 30px;
+      padding: 0;
   }
   .blur-list li { 
     font-size: 22px; 
-  }
+  } */
 
  /* =====  Samsung Galaxy S24 Ultra  =====
    real CSS viewport: 412 × 915  |  dpr: 3.5  |  portrait
    ======================================== */
+/* =====  S24 Ultra real viewport  ===== */
 @media only screen
        and (width: 412px)
        and (height: 915px)
@@ -1512,4 +1514,7 @@ html {
 
   /* --- about-us text LEFT UNTOUCHED – keeps its 200 px left pad --- */
 }
+
 }
+}
+
