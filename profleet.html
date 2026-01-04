@@ -188,22 +188,29 @@
           </main>
 
 <!-------------------------------------------------- QUICK FORM --------------------------------------------------------->
+
 <div class="inner-background">
   <section id="quick-contact" class="quick-contact-section">
     <h1>Quick Contact</h1>
     <p>Fill out the form below and we'll get back to you as soon as possible!</p>
 
-    <form action="https://getform.io/f/amdjykzb" method="POST">
-    
-      
-      <input type="text" name="full_name" placeholder="Full Name" required>
-      <input type="tel" name="phone" placeholder="Phone Number" required>
-      <textarea name="message" placeholder="Message" rows="5" required></textarea>
+<form action="https://formsubmit.co/connect@profleetrecruit.com" method="POST">
+  <!-- Enable spam protection with CAPTCHA -->
+  <input type="hidden" name="_captcha" value="true">
 
-      <!-- Hidden settings for getform.io -->
-      <input type="hidden" name="_subject" value="Quick Contact">
+  <!-- Optional: Redirect after submit -->
+  <!-- <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html"> -->
 
-      <button type="submit">Send Message</button>
+  <label for="name">Full Name</label>
+  <input type="text" id="name" name="name" placeholder="Full Name" required>
+
+  <label for="phone">Phone Number</label>
+  <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+
+  <label for="message">Message</label>
+  <textarea id="message" name="message" placeholder="Message" required></textarea>
+
+  <button type="submit">Send</button>
    
       <h5 class="privacy-notice">
         <em>We respect your privacy. <br>
@@ -264,6 +271,7 @@
 
   </body>
 </html>
+
 
 
 
