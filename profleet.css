@@ -1179,4 +1179,44 @@ html {
   body {
     padding-top: 110px;
   }
+
+  /* VIDEO / HERO MOBILE ADJUST */
+@media (max-width: 430px) and (orientation: portrait) {
+    .overvideo {
+        margin-top: -110px; /* move video up to cover header */
+        height: calc(100vh + 110px); /* keep full screen */
+    }
 }
+
+@media (max-width: 430px) and (orientation: portrait) {
+    .section3 {
+        flex-direction: column; /* stack image + text vertically */
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        overflow-x: hidden; /* prevent horizontal scroll */
+    }
+
+    .image-container {
+        width: 80%; /* scale image down */
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .text-container {
+        width: 90%; /* fit text inside screen */
+        padding: 10px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 430px) and (orientation: portrait) {
+    .text-container {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+}
+
+}
+
+
