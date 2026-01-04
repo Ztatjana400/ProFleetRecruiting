@@ -1209,10 +1209,11 @@ html {
   .header {
     height: 55px;
     padding: 6px 12px;
+    width: 100%;
   }
 
   .company {
-    font-size: 18px;
+    font-size: 16px;
     white-space: nowrap;
   }
 
@@ -1221,8 +1222,8 @@ html {
   }
 
   .nav a {
-    font-size: 14px;
-    padding: 6px 10px;
+    font-size: 12px;
+    padding: 4px 8px;
   }
 
   /* HERO / ABOVE-THE-FOLD */
@@ -1271,5 +1272,5 @@ html {
 }
 
 }
-
 /*-----------------------------------------------------------------------------------------------------------------------*/
+
