@@ -1205,11 +1205,11 @@ html {
     display: flex;            /* buttons in one row */
     flex-direction: row;      /* horizontal line */
     flex-wrap: nowrap;        /* prevent wrapping */
-    justify-content: center;  /* center under company */
+    justify-content: flex-end;  /* center under company */
     align-items: center;
-    gap: 6px;                 /* small space between buttons */
-    width: 100%;
-  }
+    gap: 5px;                 /* small space between buttons */
+    
+
 
   .nav a {
     font-size: 13px;
@@ -1219,8 +1219,9 @@ html {
   }
 
   .nav .nav_btn {
-    padding: 7px 12px;
-    font-size: 13px;
+	display: inline-block;
+    padding: 7px 11px;
+    white-space: nowrap;
     border-radius: 14px;
   }
 
@@ -1317,4 +1318,5 @@ html {
 }
 
 }
+
 
