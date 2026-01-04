@@ -1324,40 +1324,36 @@ html {
 
   /* Header */
   .header {
-    flex-direction: column;
-    height: auto;
-    padding: 8px 10px;
-    background: rgba(28, 31, 38, 0.95);
-    backdrop-filter: blur(4px);
-  }
+  display: flex;
+  flex-direction: column; /* company on top, nav below */
+  align-items: center;    /* center everything horizontally */
+  padding: 8px 10px;
+}
 
-  .company {
-    font-size: 18px;
-    margin-bottom: 6px;
-    white-space: nowrap;
-    text-align: center;
-  }
+.company {
+  font-size: 18px;
+  margin-bottom: 6px;
+  white-space: nowrap;
+  text-align: center;
+}
 
-  /* NAV buttons in one row */
-  .nav {
-    display: flex;
-    flex-direction: row; /* horizontal */
-    flex-wrap: nowrap;   /* do NOT wrap */
-    justify-content: center; /* center below company */
-    gap: 6px;            /* spacing between buttons */
-    width: 100%;
-    margin: 0 auto;
-  }
+.nav {
+  display: flex;          /* horizontal layout */
+  flex-direction: row;    
+  flex-wrap: nowrap;      
+  justify-content: center; 
+  gap: 6px;               /* space between buttons */
+  width: 100%;
+}
 
-  .nav a,
-  .nav .nav_btn {
-    display: inline-block;
-    width: auto;
-    font-size: 12px;
-    padding: 6px 10px;
-    white-space: nowrap;
-    text-align: center;
-  }
+.nav a,
+.nav .nav_btn {
+  display: inline-block;
+  padding: 6px 10px;
+  font-size: 12px;
+  white-space: nowrap;    /* prevents breaking into multiple lines */
+  text-align: center;
+}
 
   /* Body padding to avoid header overlap */
   body {
@@ -1442,5 +1438,6 @@ html {
     margin-bottom: 10px;
   }
 }
+
 
 
