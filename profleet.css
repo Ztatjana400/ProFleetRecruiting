@@ -1086,20 +1086,30 @@ html {
         }
     }
 }
+/*----------------------------------------------------------------------------------------------------------------------*/
+/* ------------------------------------------ DESKTOP: min-width 992px -------------------------------------------------*/
+@media (min-width: 92px) {
 
------------------------------------------------------------------------------------------------------------------*/
+    /* Text Container Width */
+    .image-text-block .text-container,
+    .image-text-block .text-container-about-us {
+        padding: 0 80px;
+        max-width: 700px;
+    }
+}
+/*----------------------------------------------------------------------------------------------------------------------*/
 /*-----------------------------------------LARGE DESKTOP: min-width 1200px ---------------------------------------------*/
-/* @media (min-width: 1200px) {
+@media (min-width: 1200px) {
 
-    /* Section 3 Flex Layout 
+    /* Section 3 Flex Layout */
     .image-text-block .section3 {
         display: flex;
-        align-items: center;   /* vertical center 
-        justify-content: flex-start; left align 
-        gap: 20px;             space between image and text 
+        align-items: center;   /* vertical center */
+        justify-content: flex-start; /* left align */
+        gap: 20px;             /* space between image and text */
     }
 
-    /* Move Text Closer to Image 
+    /* Move Text Closer to Image */
     .image-text-block .text-container {
         margin-left: 50px;
         padding: 0;
@@ -1109,12 +1119,12 @@ html {
 
 @media (width: 412px) and (height: 915px) and (orientation: portrait) {
 
-  /* Header 
+  /* Header */
   .header {
-    flex-direction: row;         buttons + company name in one row 
+    flex-direction: row;        /* buttons + company name in one row */
     justify-content: space-between;
     align-items: center;
-    height: 65px;               fixed header height 
+    height: 65px;               /* fixed header height */
     padding: 8px 12px;
     background: rgba(28,31,38,0.95);
     backdrop-filter: blur(4px);
@@ -1122,17 +1132,17 @@ html {
 
   .company {
     font-size: 20px;
-    margin: 0;                  /* remove extra bottom margin
+    margin: 0;                  /* remove extra bottom margin */
   }
 
-  /* Nav in one row 
+  /* Nav in one row */
   .nav {
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;           /* no wrapping 
-    gap: 6px;                    /* small space between buttons
+    flex-wrap: nowrap;           /* no wrapping */
+    gap: 6px;                    /* small space between buttons */
     align-items: center;
-    justify-content: flex-end;   /* buttons aligned right 
+    justify-content: flex-end;   /* buttons aligned right */
     width: auto;
   }
 
@@ -1140,7 +1150,7 @@ html {
     font-size: 13px;
     padding: 6px 10px;
     margin: 0;
-    white-space: nowrap;         /* prevent line breaks 
+    white-space: nowrap;         /* prevent line breaks */
   }
 
   .nav .nav_btn {
@@ -1150,13 +1160,13 @@ html {
   }
 
   body {
-    padding-top: 75px;           /* ensure header doesn't overlap content 
+    padding-top: 75px;           /* ensure header doesn't overlap content */
     overflow-x: hidden;
   }
 
-  /* Hero overlay adjustments 
+  /* Hero overlay adjustments */
   .overvideo-overlay {
-    justify-content: flex-start; /* move overlay a bit up 
+    justify-content: flex-start; /* move overlay a bit up */
     padding-top: 80px;
     padding-left: 10px;
     padding-right: 10px;
@@ -1164,281 +1174,364 @@ html {
   }
 
   .overvideo-overlay h1 {
-    font-size: 5.5vw;            /* slightly bigger 
+    font-size: 5.5vw;            /* slightly bigger */
   }
 
   .overvideo-overlay p {
-    font-size: 3.8vw;            /* slightly bigger 
+    font-size: 3.8vw;            /* slightly bigger */
   }
-} */
+}
 
-/*---------------------------------------------------------------------- MOBILE VIEW: 412x915 PORTRAIT ---------------------------------------------------*/
-/* ================= MOBILE 412x925 PORTRAIT ================= */
-@media (max-width: 430px) and (max-height: 925px) and (orientation: portrait) {
+/* MOBILE VIEW: 412x915 PORTRAIT */
+@media (width: 412px) and (height: 915px) and (orientation: portrait) {
 
-  /* ---------------- HEADER ---------------- */
+  /* HEADER */
   .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    flex-direction: column;        /* company on top, nav below */
+    justify-content: center;
+    align-items: center;
     height: auto;
     padding: 10px 12px;
-    display: flex;
-    flex-direction: column; /* keep company + nav stacked */
-    align-items: center;
-    justify-content: center;
-    background: rgba(28, 31, 38, 0.95);
+    background: rgba(28,31,38,0.95);
     backdrop-filter: blur(4px);
-    z-index: 100;
   }
 
-  /* COMPANY NAME */
   .company {
     font-size: 20px;
-    margin-bottom: 6px;
-    white-space: nowrap;
+    margin-bottom: 8px;           /* space below company name */
+    text-align: center;
   }
 
-  /* ---------------- NAVIGATION ---------------- */
   .nav {
-    display: flex;            /* buttons in one row */
-    flex-direction: row;      /* horizontal line */
-    flex-wrap: nowrap;        /* prevent wrapping */
-    justify-content: flex-end;  /* center under company */
-    align-items: center;
-    gap: 5px;                 /* small space between buttons */
-    
-
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;             /* keep all buttons in one row */
+    justify-content: center;       /* center the buttons below company */
+    gap: 6px;
+    width: 100%;
+  }
 
   .nav a {
     font-size: 13px;
-    padding: 6px 8px;
+    padding: 6px 10px;
+    white-space: nowrap;
     margin: 0;
-    white-space: nowrap;      /* keep text on one line */
   }
 
   .nav .nav_btn {
-	display: inline-block;
-    padding: 7px 11px;
-    white-space: nowrap;
+    padding: 7px 12px;
+    font-size: 13px;
     border-radius: 14px;
   }
 
-  /* ---------------- BODY / REMOVE GAP ---------------- */
   body {
-    padding-top: 0;  /* remove the gap under header */
+    padding-top: 110px;            /* header height adjustment */
     overflow-x: hidden;
   }
 
-  /* ---------------- VIDEO ---------------- */
-  .overvideo {
-    position: relative;
-    top: 0;             /* start at the very top */
-    width: 100%;
-    height: 100vh;      /* full viewport height */
-    overflow: hidden;
-
-    background-image: url("PFRimages/truck_new_background.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
-  .hero-video-container {
-    position: absolute;
-    top: 0;           /* flush to top */
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: 0;
-  }
-
-  .hero-video-container video.hero-media {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  /* ---------------- OVERLAY ---------------- */
-.overvideo-overlay {
-    position: absolute;
-    top: 0;
-    left: -10px;        /* << shift the overlay slightly left */
-    width: calc(100% + 20px); /* expand width to prevent clipping */
-    height: 100%;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;   /* << align content to start (left) */
-    text-align: left;          /* text aligns left inside overlay */
-    color: #F7F2EE;
-    padding: 0 15px;
-}
-
-  .overvideo-overlay h1 {
-    font-size: clamp(24px, 6vw, 40px);
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
-  }
-
-  .overvideo-overlay p {
-    font-size: clamp(14px, 4vw, 22px);
-    text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
-    max-width: 90%;
-    margin: 0 auto;
-  }
-
-	/* SECTION 3 - driver image + text block */
-.section3 {
-    flex-direction: column;      /* stack image and text vertically */
-    align-items: center;         /* center horizontally */
-    justify-content: center;
-    text-align: center;          /* text centered below image */
-    padding: 10px 15px;
-}
-
-/* driver image */
-.image-container {
-    width: 80%;                  /* scale down image to fit mobile */
-    max-width: 300px;            /* optional max width */
-    margin: 0 auto;              /* center image */
-}
-
-/* text next to image */
-.text-container {
-    width: 90%;                  /* make text fit inside screen */
-    max-width: 350px;            /* optional max width */
-    margin: 15px auto 0 auto;    /* center below image */
-    padding: 0 10px;             /* remove side overflow */
-    box-sizing: border-box;
-    text-align: center;          /* center text */
-    transform: none;             /* remove any translateX pushing it out */
-}
-
-}
-
-/*--------------------------------- MOBILE: 360x650 ---------------------------------*/
-@media (max-width: 360px) and (max-height: 650px) {
-
-  /* Header */
-  .header {
-  display: flex;
-  flex-direction: column; /* company on top, nav below */
-  align-items: center;    /* center everything horizontally */
-  padding: 8px 10px;
-}
-
-.company {
-  font-size: 18px;
-  margin-bottom: 6px;
-  white-space: nowrap;
-  text-align: center;
-}
-
-.nav {
-  display: flex;          /* horizontal layout */
-  flex-direction: row;    
-  flex-wrap: nowrap;      
-  justify-content: center; 
-  gap: 3px;               /* space between buttons */
-  width: 100%;
-}
-
-.nav a,
-.nav .nav_btn {
-  display: inline-block;
-  padding: 4px 6px;
-  font-size: 10px;
-  white-space: nowrap;    /* prevents breaking into multiple lines */
-  text-align: center;
-}
-
-  /* Body padding to avoid header overlap */
-  body {
-    padding-top: 100px;
-  }
-
-  /* Video section moved up */
-  .overvideo {
-    height: 100vh;
-    margin-top: 0;
-  }
-
-  /* Overlay text slightly left */
+  /* HERO VIDEO OVERLAY */
   .overvideo-overlay {
-    padding-left: 5%;
-    padding-right: 5%;
+    justify-content: center;       /* keep centered */
+    padding: 0 10px;
     text-align: center;
+    z-index: 2;
+    color: #F7F2EE;
   }
 
   .overvideo-overlay h1 {
-    font-size: clamp(20px, 5vw, 28px);
-    margin-bottom: 10px;
-    transform: translateX(-5px); /* slightly left */
+    font-size: 5.5vw;
+    margin-bottom: 12px;
   }
 
   .overvideo-overlay p {
-    font-size: clamp(12px, 4vw, 18px);
+    font-size: 3.8vw;
     max-width: 90%;
     margin: 0 auto;
-    transform: translateX(-5px); /* slightly left */
   }
 
-  /* Driver image and text container */
-  .section3 {
+  /* SECTION 3 - DRIVER IMAGE + TEXT */
+  .image-text-block .section3 {
+    flex-direction: column;       /* stack image + text */
+    align-items: center;
+    text-align: center;
+    padding: 20px 10px;
+  }
+
+  .image-text-block .image-container {
+    width: 80%;
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    transform: translateX(-10px); /* move slightly left */
+  }
+
+  .image-text-block .text-container {
+    width: 90%;
+    max-width: 350px;
+    margin: 20px auto 0 auto;
+    text-align: left;
+    transform: translateX(-10px); /* move text slightly left */
+    padding: 10px;
+  }
+
+  .blur-list-section {
+    max-width: 100%;
+    margin: 20px auto;
+    padding: 25px 15px;
+    text-align: left;
+  }
+
+  .blur-list-section li {
+    font-size: 16px;
+    padding: 10px 15px;
+  }
+
+  /* SECTION 4 ABOUT US + LOGO */
+  .about-us-image-text-block .section3 {
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 20px;
+    text-align: center;
+    gap: 15px;
+    padding: 15px;
   }
 
-  .image-container {
+  .text-container-about-us {
+    padding: 0 10px;
+    max-width: 90%;
+    text-align: center;
+  }
+
+  .image-container1 {
     max-width: 250px;
-    width: 80%;
     margin: 0 auto;
   }
 
-  .text-container {
-    max-width: 300px;
-    width: 90%;
-    margin: 15px auto 0;
-    text-align: center;
-    padding: 0 10px;
-    box-sizing: border-box;
-  }
-
-  /* Color blocks and benefits */
-  .color-blocks {
+  /* SECTION 5 - COVERAGE IMAGE */
+  .image-text-block2-coverage {
     flex-direction: column;
-    gap: 15px;
-    padding: 0 10px;
+    align-items: center;
+    padding: 20px 10px;
+    text-align: center;
+    gap: 20px;
   }
 
-  /* Quick contact form */
+  .image-text-block2-coverage .image-container2 img {
+    width: 90%;
+    max-width: 350px;
+    margin: 0 auto;
+  }
+
+  .image-text-block2-coverage .text-container2-coverage {
+    flex: 1;
+    width: 90%;
+    max-width: 350px;
+    margin: 0 auto;
+    font-size: 18px;
+    text-align: left;
+  }
+
+  /* COLORED BOXES */
+.color-blocks > div {
+    flex: 1 1 250px;
+    max-width: 300px;
+    padding: 24px 22px;
+    border-radius: 15px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s, box-shadow 0.4s;
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: linear-gradient(145deg, #fff, #f0f0f0);
+
+    /* shine effect setup */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Text inside colored boxes */
+.color-blocks h3 {
+    margin-bottom: 14px;
+    color: #161629;
+    align-self: center;
+}
+
+.color-blocks p {
+    color: #161629;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    position: relative;
+    z-index: 1; /* text above shine */
+}
+
+/* Hover effect for box */
+.color-blocks > div:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+  /* QUICK CONTACT FORM */
   .quick-contact-section {
-    padding: 30px 15px;
-    max-width: 90%;
+    padding: 40px 15px;
+    max-width: 350px;
+  }
+
+  .quick-contact-section h2 {
+    font-size: 28px;
+  }
+
+  .quick-contact-section p {
+    font-size: 16px;
+  }
+
+  .quick-contact-section input,
+  .quick-contact-section textarea {
+    font-size: 14px;
   }
 
   .quick-contact-section button {
     width: 100%;
+    font-size: 16px;
   }
 
-  /* Footer adjustments */
+  /* FOOTER */
   .site-footer .footer-content {
-    max-width: 100%;
-    padding: 0 10px;
-    text-align: center;
+    padding: 0 15px;
   }
 
-  .social-icons {
-    justify-content: center;
-    margin-bottom: 10px;
+  .site-footer .social-icons {
+    gap: 12px;
   }
 }
 
+/* =========================================================
+   Samsung Galaxy S24 Ultra  (412 × 915 px, 515 ppi, 19.5:9)
+   ========================================================= */
+@media only screen
+       and (width: 412px)
+       and (height: 915px)
+       and (-webkit-device-pixel-ratio: 3.5)
+       and (orientation: portrait)
+       and (pointer: coarse) {
 
+  /* --- HEADER -------------------------------------------------------- */
+  .header {
+    position: fixed;
+    top: 12px;          /* push header down to close the gap */
+    left: 0;
+    right: 0;
 
+    flex-direction: row;          /* keep everything in one line */
+    justify-content: space-between;
+    height: 60px;                 /* slightly tighter */
+    padding: 6px 10px;
+    background: rgba(28,31,38,.98);
+    backdrop-filter: blur(6px);
+  }
+  .company {
+    font-size: 19px;
+    letter-spacing: .3px;
+  }
+  .nav {
+    gap: 4px;
+  }
+  .nav .nav_btn {
+    font-size: 12px;
+    padding: 6px 10px;
+    border-radius: 12px;
+  }
+
+  
+
+  /* --- HERO VIDEO / OVERLAY ----------------------------------------- */
+  .overvideo-overlay {
+    padding-top: 70px;            /* extra space under header */
+  }
+  .overvideo-overlay h1 {
+    font-size: 28px;              /* 6.8 vw → 28 px */
+    line-height: 1.2;
+  }
+  .overvideo-overlay p {
+    font-size: 18px;              /* 4.4 vw → 18 px */
+    max-width: 360px;
+  }
+
+  /* --- DRIVER SECTION (image + list) -------------------------------- */
+  .image-text-block .section3 {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px 10px;
+  }
+  .image-text-block .image-container {
+    width: 85%;
+    max-width: 320px;
+    transform: none;              /* reset earlier translateX(-10px) */
+  }
+  .blur-list-section {
+    max-width: 360px;
+    padding: 25px 15px;
+  }
+  .blur-list li {
+    font-size: 15px;
+    padding: 10px 12px;
+  }
+
+  /* --- ABOUT-US SECTION (text + logo) ------------------------------- */
+  .about-us-image-text-block .section3 {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .text-container-about-us {
+    padding: 0 10px;
+    max-width: 360px;
+    text-align: center;
+  }
+  .image-container1 {
+    max-width: 200px;
+  }
+
+  /* --- COVERAGE SECTION (map + text) -------------------------------- */
+  .image-text-block2-coverage {
+    flex-direction: column;
+    padding: 20px 10px;
+  }
+  .image-text-block2-coverage .image-container2 img {
+    width: 90%;
+    max-width: 340px;
+  }
+  .image-text-block2-coverage .text-container2-coverage {
+    width: 90%;
+    max-width: 340px;
+    font-size: 17px;
+    margin-top: 20px;
+  }
+
+  /* --- COLORED BOXES ------------------------------------------------- */
+  .color-blocks > div {
+    flex: 1 1 160px;
+    max-width: 160px;
+    padding: 18px 14px;
+  }
+  .color-blocks h3 { font-size: 16px; }
+  .color-blocks p  { font-size: 14px; }
+
+  /* --- QUICK-CONTACT FORM ------------------------------------------- */
+  .quick-contact-section {
+    padding: 30px 15px;
+    max-width: 340px;
+  }
+  .quick-contact-section h2 { font-size: 24px; }
+  .quick-contact-section p  { font-size: 15px; }
+  .quick-contact-section button {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  /* --- FOOTER -------------------------------------------------------- */
+  .site-footer .footer-content { padding: 0 10px; }
+  .social-icons a { font-size: 22px; }
+}
 
