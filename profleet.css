@@ -1086,27 +1086,17 @@ html {
         }
     }
 }
-/*----------------------------------------------------------------------------------------------------------------------*/
-/* ------------------------------------------ DESKTOP: min-width 992px -------------------------------------------------*/
-@media (min-width: 92px) {
 
-    /* Text Container Width */
-    .image-text-block .text-container,
-    .image-text-block .text-container-about-us {
-        padding: 0 80px;
-        max-width: 700px;
-    }
-}
-/*----------------------------------------------------------------------------------------------------------------------*/
+-----------------------------------------------------------------------------------------------------------------*/
 /*-----------------------------------------LARGE DESKTOP: min-width 1200px ---------------------------------------------*/
 /* @media (min-width: 1200px) {
 
     /* Section 3 Flex Layout 
     .image-text-block .section3 {
         display: flex;
-        align-items: center;   /* vertical center */
-        justify-content: flex-start; /* left align */
-        gap: 20px;             /* space between image and text */
+        align-items: center;   /* vertical center 
+        justify-content: flex-start; left align 
+        gap: 20px;             space between image and text 
     }
 
     /* Move Text Closer to Image 
@@ -1119,12 +1109,12 @@ html {
 
 @media (width: 412px) and (height: 915px) and (orientation: portrait) {
 
-  /* Header */
+  /* Header 
   .header {
-    flex-direction: row;        /* buttons + company name in one row 
+    flex-direction: row;         buttons + company name in one row 
     justify-content: space-between;
     align-items: center;
-    height: 65px;               /* fixed header height 
+    height: 65px;               fixed header height 
     padding: 8px 12px;
     background: rgba(28,31,38,0.95);
     backdrop-filter: blur(4px);
@@ -1190,7 +1180,6 @@ html {
   display: flex;
   flex-direction: column;  /* company on top, buttons below */
   align-items: center;     /* center everything horizontally */
-  padding: 10px;
   backdrop-filter: blur(2px);
   background: rgba(33,36,42,0.2);
 }
@@ -1418,5 +1407,6 @@ html {
     gap: 12px;
   }
 }
+
 
 
