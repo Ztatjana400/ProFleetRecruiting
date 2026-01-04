@@ -1099,9 +1099,9 @@ html {
 }
 /*----------------------------------------------------------------------------------------------------------------------*/
 /*-----------------------------------------LARGE DESKTOP: min-width 1200px ---------------------------------------------*/
-@media (min-width: 1200px) {
+/* @media (min-width: 1200px) {
 
-    /* Section 3 Flex Layout */
+    /* Section 3 Flex Layout 
     .image-text-block .section3 {
         display: flex;
         align-items: center;   /* vertical center */
@@ -1109,7 +1109,7 @@ html {
         gap: 20px;             /* space between image and text */
     }
 
-    /* Move Text Closer to Image */
+    /* Move Text Closer to Image 
     .image-text-block .text-container {
         margin-left: 50px;
         padding: 0;
@@ -1121,10 +1121,10 @@ html {
 
   /* Header */
   .header {
-    flex-direction: row;        /* buttons + company name in one row */
+    flex-direction: row;        /* buttons + company name in one row 
     justify-content: space-between;
     align-items: center;
-    height: 65px;               /* fixed header height */
+    height: 65px;               /* fixed header height 
     padding: 8px 12px;
     background: rgba(28,31,38,0.95);
     backdrop-filter: blur(4px);
@@ -1132,17 +1132,17 @@ html {
 
   .company {
     font-size: 20px;
-    margin: 0;                  /* remove extra bottom margin */
+    margin: 0;                  /* remove extra bottom margin
   }
 
-  /* Nav in one row */
+  /* Nav in one row 
   .nav {
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;           /* no wrapping */
-    gap: 6px;                    /* small space between buttons */
+    flex-wrap: nowrap;           /* no wrapping 
+    gap: 6px;                    /* small space between buttons
     align-items: center;
-    justify-content: flex-end;   /* buttons aligned right */
+    justify-content: flex-end;   /* buttons aligned right 
     width: auto;
   }
 
@@ -1150,7 +1150,7 @@ html {
     font-size: 13px;
     padding: 6px 10px;
     margin: 0;
-    white-space: nowrap;         /* prevent line breaks */
+    white-space: nowrap;         /* prevent line breaks 
   }
 
   .nav .nav_btn {
@@ -1160,13 +1160,13 @@ html {
   }
 
   body {
-    padding-top: 75px;           /* ensure header doesn't overlap content */
+    padding-top: 75px;           /* ensure header doesn't overlap content 
     overflow-x: hidden;
   }
 
-  /* Hero overlay adjustments */
+  /* Hero overlay adjustments 
   .overvideo-overlay {
-    justify-content: flex-start; /* move overlay a bit up */
+    justify-content: flex-start; /* move overlay a bit up 
     padding-top: 80px;
     padding-left: 10px;
     padding-right: 10px;
@@ -1174,15 +1174,15 @@ html {
   }
 
   .overvideo-overlay h1 {
-    font-size: 5.5vw;            /* slightly bigger */
+    font-size: 5.5vw;            /* slightly bigger 
   }
 
   .overvideo-overlay p {
-    font-size: 3.8vw;            /* slightly bigger */
+    font-size: 3.8vw;            /* slightly bigger 
   }
-}
+} */
 
-/* MOBILE VIEW: 412x915 PORTRAIT */
+/*---------------------------------------------------------------------- MOBILE VIEW: 412x915 PORTRAIT ---------------------------------------------------*/
 @media (width: 412px) and (height: 915px) and (orientation: portrait) {
 
   /* HEADER */
@@ -1191,6 +1191,8 @@ html {
   flex-direction: column;  /* company on top, buttons below */
   align-items: center;     /* center everything horizontally */
   padding: 10px;
+  backdrop-filter: blur(2px);
+  background: rgba(33,36,42,0.2);
 }
 
 .nav {
@@ -1230,6 +1232,15 @@ html {
     padding-top: 110px;            /* header height adjustment */
     overflow-x: hidden;
   }
+
+	.overvideo {
+    position: relative;
+    top: 0;       /* ensure top is 0 */
+    left: 0;
+    width: 100%;
+    height: 100vh; /* full viewport height */
+}
+
 
   /* HERO VIDEO OVERLAY */
   .overvideo-overlay {
@@ -1407,4 +1418,5 @@ html {
     gap: 12px;
   }
 }
+
 
