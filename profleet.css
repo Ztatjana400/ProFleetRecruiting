@@ -1488,18 +1488,14 @@ html {
        and (orientation: portrait)
        and (pointer: coarse) {
 
-  /* --- centre driver picture & blur list exactly like .text-container-about-us --- */
-  .image-text-block .section3 {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 30px 0;
-  }
+  /* --- driver pic & blur list: centred, same width as about-us text --- */
   .image-text-block .image-container,
   .blur-list-section {
       width: 90%;
-      max-width: 900px;   /* same cap you liked */
-      margin: 0 auto;
+      max-width: 900px;
+      margin: 0 auto;          /* centre horizontally */
+      padding-left: 0;         /* kill any leftover left padding */
+      padding-right: 0;
   }
   .image-text-block .image-container img {
       width: 100%;
@@ -1507,12 +1503,13 @@ html {
       border-radius: 30px;
   }
 
-  /* --- hero text same width --- */
+  /* --- hero text optional (remove if you don’t want it) --- */
   .overvideo-overlay {
       width: 90%;
       max-width: 900px;
       margin: 0 auto;
   }
 
-    }
+  /* --- about-us text LEFT UNTOUCHED – keeps its 200 px left pad --- */
+}
 }
