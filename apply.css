@@ -1,0 +1,215 @@
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      font-weight: 300;
+      color: #302c2c;
+      line-height: 1.7;
+      margin: 0;
+      padding: 0;
+      background: #f8f7f5;
+
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+/* HEADER */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 65px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 30px;
+      background: rgba(33,36,42,0.9);
+      z-index: 1000;
+      color: white;
+      font-weight: 600;
+      box-sizing: border-box;
+
+/*HEADER DISAPPEAR*/
+      transition: opacity 2s ease, background-color 0.35s ease;
+    }
+
+/* Hide header */
+    .header.fade-out {
+      opacity: 0;
+      pointer-events:none;
+    }
+
+.header.scrolled {
+    background: #1c1f26b2;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+}
+
+/*HEADER-LEFT/COMPANY NAME*/
+.company {
+    font-weight: 700;
+    font-size: 25px;
+    letter-spacing: 0.5px;
+    display: flex;       /* flex container for image + text */
+    gap: 20px;           /* space between image and text */
+}
+
+/* NAV BAR */
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap; /
+}
+
+/* NAV LINKS */
+.nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+
+/* NAV BUTTONS */
+.nav .nav_btn {
+    background-color: #e1c7b40e;
+    padding: 5px 16px;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: background-color 0.5s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* NAV BUTTONS/HOVER */
+.nav .nav_btn:hover {
+    background-color: #d17f03;
+    transform: scale(1.08);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+
+.form-container {
+  max-width: 800px;
+  top: 80px;
+  margin: 50px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+}
+
+h1, h2 {
+  color: #161e44;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+p {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #555;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="file"],
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.checkbox-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* 1. OTR */
+.radio-group label {
+  display: block;      /* each label on its own line */
+  margin-bottom: 8px;  /* space between options */
+  font-weight: 300;    /* same as other form text */
+  color: #161629;
+}
+
+.radio-group input[type="radio"] {
+  margin-right: 10px;  /* small space between circle and text */
+}
+
+
+/* 4. STAY AWAY STATES */
+select[name="avoid_states"] {
+  width: 300px;
+  max-width: 100%;
+  display: block;
+  margin: 13px auto 0px;  /* centers and adds bottom spacing */
+}
+
+/* SUBMIT BUTTON */
+button[type="submit"] {
+  background: linear-gradient(145deg, #1E3A8A, #1B2F70);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  display: block;       /* make it behave like a block element */
+  margin: 0 auto;
+}
+
+button[type="submit"]:hover {
+  background: linear-gradient(145deg, #3B82F6, #2563EB);
+}
+
+button[type="submit"]:active {
+  background: linear-gradient(145deg, #2563EB, #1E3A8A);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* FOOTER */
+.site-footer {
+  flex-shrink: 0; /* prevents footer from shrinking */
+  width: 100%;
+  background: #1C1F26;
+  color: #E5E7EB;
+  padding: 30px 0;
+  text-align: center;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+    /* Mobile responsive */
+@media (max-width: 620px) {
+  .container {
+    width: 100%;
+    margin: 80px auto 0;
+  }
+}
+
+/* Move form down on desktop only */
+@media (min-width: 768px) {
+  .container {
+    margin-top: 115px; /* moves form below header on desktop */
+  }
+}
