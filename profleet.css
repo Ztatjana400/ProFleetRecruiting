@@ -1173,43 +1173,50 @@ html {
 } */
 
 /*---------------------------------------------------------------------- MOBILE VIEW: 412x915 PORTRAIT ---------------------------------------------------*/
-@media (width: 412px) and (height: 915px) and (orientation: portrait) {
+/* ================= MOBILE 412x925 PORTRAIT ================= */
+@media (max-width: 430px) and (max-height: 925px) and (orientation: portrait) {
 
-  /* HEADER */
+  /* ---------------- HEADER ---------------- */
   .header {
-  display: flex;
-  flex-direction: column;  /* company on top, buttons below */
-  align-items: center;     /* center everything horizontally */
-  backdrop-filter: blur(2px);
-  background: rgba(33,36,42,0.2);
-}
-
-.nav {
-  display: flex;           /* makes child buttons sit in a row */
-  flex-direction: row;     /* default is row, just to be explicit */
-  flex-wrap: nowrap;       /* prevents wrapping to next line */
-  justify-content: center; /* center buttons horizontally */
-  gap: 10px;               /* space between buttons */
-}
-
-.nav a {
-  padding: 8px 12px;
-  text-decoration: none;
-  background-color: #1c1f26;
-  color: white;
-  border-radius: 12px;
-  font-size: 14px;
-  white-space: nowrap;     /* prevents button text from breaking */
-}
-
-
-  .company {
-    font-size: 20px;
-    margin-bottom: 8px;           /* space below company name */
-    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: auto;
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column; /* keep company + nav stacked */
+    align-items: center;
+    justify-content: center;
+    background: rgba(28, 31, 38, 0.95);
+    backdrop-filter: blur(4px);
+    z-index: 100;
   }
 
-  
+  /* COMPANY NAME */
+  .company {
+    font-size: 20px;
+    margin-bottom: 6px;
+    white-space: nowrap;
+  }
+
+  /* ---------------- NAVIGATION ---------------- */
+  .nav {
+    display: flex;            /* buttons in one row */
+    flex-direction: row;      /* horizontal line */
+    flex-wrap: nowrap;        /* prevent wrapping */
+    justify-content: center;  /* center under company */
+    align-items: center;
+    gap: 6px;                 /* small space between buttons */
+    width: 100%;
+  }
+
+  .nav a {
+    font-size: 13px;
+    padding: 6px 8px;
+    margin: 0;
+    white-space: nowrap;      /* keep text on one line */
+  }
 
   .nav .nav_btn {
     padding: 7px 12px;
@@ -1217,196 +1224,68 @@ html {
     border-radius: 14px;
   }
 
+  /* ---------------- BODY / REMOVE GAP ---------------- */
   body {
-    padding-top: 110px;            /* header height adjustment */
+    padding-top: 0;  /* remove the gap under header */
     overflow-x: hidden;
   }
 
-	.overvideo {
+  /* ---------------- VIDEO ---------------- */
+  .overvideo {
     position: relative;
-    top: 0;       /* ensure top is 0 */
+    top: 0;             /* start at the very top */
+    width: 100%;
+    height: 100vh;      /* full viewport height */
+    overflow: hidden;
+
+    background-image: url("PFRimages/truck_new_background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .hero-video-container {
+    position: absolute;
+    top: 0;           /* flush to top */
     left: 0;
     width: 100%;
-    height: 100vh; /* full viewport height */
-}
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+  }
 
+  .hero-video-container video.hero-media {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
-  /* HERO VIDEO OVERLAY */
+  /* ---------------- OVERLAY ---------------- */
   .overvideo-overlay {
-    justify-content: center;       /* keep centered */
-    padding: 0 10px;
-    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     z-index: 2;
-    color: #F7F2EE;
-  }
-
-  .overvideo-overlay h1 {
-    font-size: 5.5vw;
-    margin-bottom: 12px;
-  }
-
-  .overvideo-overlay p {
-    font-size: 3.8vw;
-    max-width: 90%;
-    margin: 0 auto;
-  }
-
-  /* SECTION 3 - DRIVER IMAGE + TEXT */
-  .image-text-block .section3 {
-    flex-direction: column;       /* stack image + text */
-    align-items: center;
-    text-align: center;
-    padding: 20px 10px;
-  }
-
-  .image-text-block .image-container {
-    width: 80%;
-    max-width: 350px;
-    margin-left: auto;
-    margin-right: auto;
-    transform: translateX(-10px); /* move slightly left */
-  }
-
-  .image-text-block .text-container {
-    width: 90%;
-    max-width: 350px;
-    margin: 20px auto 0 auto;
-    text-align: left;
-    transform: translateX(-10px); /* move text slightly left */
-    padding: 10px;
-  }
-
-  .blur-list-section {
-    max-width: 100%;
-    margin: 20px auto;
-    padding: 25px 15px;
-    text-align: left;
-  }
-
-  .blur-list-section li {
-    font-size: 16px;
-    padding: 10px 15px;
-  }
-
-  /* SECTION 4 ABOUT US + LOGO */
-  .about-us-image-text-block .section3 {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 15px;
-    padding: 15px;
-  }
-
-  .text-container-about-us {
-    padding: 0 10px;
-    max-width: 90%;
-    text-align: center;
-  }
-
-  .image-container1 {
-    max-width: 250px;
-    margin: 0 auto;
-  }
-
-  /* SECTION 5 - COVERAGE IMAGE */
-  .image-text-block2-coverage {
-    flex-direction: column;
-    align-items: center;
-    padding: 20px 10px;
-    text-align: center;
-    gap: 20px;
-  }
-
-  .image-text-block2-coverage .image-container2 img {
-    width: 90%;
-    max-width: 350px;
-    margin: 0 auto;
-  }
-
-  .image-text-block2-coverage .text-container2-coverage {
-    flex: 1;
-    width: 90%;
-    max-width: 350px;
-    margin: 0 auto;
-    font-size: 18px;
-    text-align: left;
-  }
-
-  /* COLORED BOXES */
-.color-blocks > div {
-    flex: 1 1 250px;
-    max-width: 300px;
-    padding: 24px 22px;
-    border-radius: 15px;
-    cursor: pointer;
     display: flex;
     flex-direction: column;
-    transition: transform 0.4s, box-shadow 0.4s;
-
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: linear-gradient(145deg, #fff, #f0f0f0);
-
-    /* shine effect setup */
-    position: relative;
-    overflow: hidden;
-}
-
-/* Text inside colored boxes */
-.color-blocks h3 {
-    margin-bottom: 14px;
-    color: #161629;
-    align-self: center;
-}
-
-.color-blocks p {
-    color: #161629;
-    font-size: 1rem;
-    margin-bottom: 10px;
-    padding-bottom: 10px;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    position: relative;
-    z-index: 1; /* text above shine */
-}
-
-/* Hover effect for box */
-.color-blocks > div:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-  /* QUICK CONTACT FORM */
-  .quick-contact-section {
-    padding: 40px 15px;
-    max-width: 350px;
-  }
-
-  .quick-contact-section h2 {
-    font-size: 28px;
-  }
-
-  .quick-contact-section p {
-    font-size: 16px;
-  }
-
-  .quick-contact-section input,
-  .quick-contact-section textarea {
-    font-size: 14px;
-  }
-
-  .quick-contact-section button {
-    width: 100%;
-    font-size: 16px;
-  }
-
-  /* FOOTER */
-  .site-footer .footer-content {
+    color: #F7F2EE;
     padding: 0 15px;
   }
 
-  .site-footer .social-icons {
-    gap: 12px;
+  .overvideo-overlay h1 {
+    font-size: clamp(24px, 6vw, 40px);
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+  }
+
+  .overvideo-overlay p {
+    font-size: clamp(14px, 4vw, 22px);
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+    max-width: 90%;
+    margin: 0 auto;
   }
 }
-
-
-
