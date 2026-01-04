@@ -1535,3 +1535,33 @@ html {
   .social-icons a { font-size: 22px; }
 }
 
+/* =========================================================
+   Samsung Galaxy S24 Ultra
+   1440 × 3120 px  |  19.5 : 9  |  512 ppi  |  portrait
+   ========================================================= */
+@media only screen
+       and (width: 1440px)
+       and (height: 3120px)
+       and (-webkit-device-pixel-ratio: 3.5)
+       and (orientation: portrait)
+       and (pointer: coarse) {
+
+  /* --- example overrides ---------------------------------- */
+  .header {
+      height: 70px;
+      padding: 0 40px;
+  }
+  .nav .nav_btn {
+      font-size: 14px;
+      padding: 8px 16px;
+  }
+
+  .overvideo-overlay h1 {
+      font-size: 56px;
+  }
+  .overvideo-overlay p {
+      font-size: 28px;
+  }
+
+  /* add any other S24-Ultra-specific tweaks below */
+}
