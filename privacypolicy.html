@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy - Pro Fleet Recruiting</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Global body style */
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      font-weight: 300;
+      color: #302c2c;
+      line-height: 1.7;
+      margin: 0;
+      padding: 0;
+      background: #f8f7f5;
+    }
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 20px;
+  background: rgba(33,36,42,0.9);
+  z-index: 1000;
+  color: white;
+  font-weight: 600;
+  box-sizing: border-box;
+
+  white-space: nowrap; /* ⬅️ PREVENT WRAPPING */
+
+
+/*HEADER DISAPPEAR*/
+      transition: opacity 2s ease, background-color 0.35s ease;
+    }
+
+/* Hide header */
+    .header.fade-out {
+      opacity: 0;
+      pointer-events:none;
+    }
+
+/*HEADER-LEFT/COMPANY NAME*/
+.company {
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0.4px;
+    display: flex;       /* flex container for image + text */
+    gap: 10px;           /* space between image and text */
+    flex-shrink: 0; 
+    margin-left: 0;
+}
+
+/*---------------------------------------------------- NAV BAR --------------------------------------------------------*/
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+     flex-shrink: 0;
+}  
+
+
+/*--------------------------------------------------- NAV LINKS -------------------------------------------------------*/
+.nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 5px;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    
+}
+
+/*----------------------------------------------------- NAV BUTTONS ----------------------------------------------------*/
+.nav .nav_btn {
+    background-color: #d17f03;
+    padding: 2px 11px;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: background-color 0.5s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    position: relative;       /* new */
+    overflow: hidden;         /* new */
+    z-index: 1;               /* ensures text stays above shine */
+    text-decoration: none; 
+}
+
+.nav .nav_btn::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -75%;
+    width: 50%;
+    height: 200%;filter: blur(2px) drop-shadow(0 0 8px #d17f03);
+    background: linear-gradient(
+        120deg,
+        rgba(255,255,255,0) 0%,
+        rgba(255,255,255,0.4) 50%,
+        rgba(255,255,255,0) 100%
+    );
+    transform: rotate(45deg);
+    animation: shine 3s linear infinite; /* continuous shine */
+    z-index: 0;
+
+}
+
+@keyframes shine {
+    0% {
+        transform: translateX(-100%) rotate(25deg);
+    }
+    100% {
+        transform: translateX(300%) rotate(25deg);
+    }
+}
+
+
+/*-------------------------------------------------- NAV BUTTONS/HOVER -------------------------------------------------*/
+.nav .nav_btn:hover {
+    background-color: #d17f03;
+    transform: scale(1.08);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+
+/* Main container */
+    .container {
+      max-width: 900px;
+      margin: 100px auto 80px; /* space for header + footer */
+      padding: 0 10px;
+    }
+
+    h1 {
+      font-weight: 400;
+      font-size: 30px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-weight: 500;
+      font-size: 22px;
+      text-transform: uppercase;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    h3 {
+      font-weight: 500;
+      font-size: 18px;
+      margin-top: 20px;
+      margin-bottom: 8px;
+    }
+
+    p, li {
+      font-weight: 300;
+      font-size: 15px;
+      margin: 10px 0;
+    }
+
+    ul {
+      margin: 10px 0 10px 20px;
+    }
+
+    a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+/* Footer */
+    .site-footer {
+      width: 100%;
+      background: #1C1F26;
+      color: #E5E7EB;
+      padding: 30px 0;
+      text-align: center;
+      font-size: 14px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header" id="header">
+          <div class="company">Pro Fleet Recruiting</div>
+            <nav class="nav">
+              <a href="profleet.html" class="nav_btn">Home</a>
+              <a href="apply.html" class="nav_btn" target="_blank">Apply now</a>
+              <!-- <a href="https://docs.google.com/forms/d/e/1FAIpQLScWvSlSRF2V8EFOCCwAu9EP-maUa_-tojCcqWxULgTrb2R-jg/viewform" target="_blank" rel="noopener noreferrer" class="nav_btn">Apply Now</a> -->
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSfITdLoXxKt0-zuE6zmppTMd5LtYBq8jicnfxxmHAPGS8FI7g/viewform?usp=header" target="_blank" rel="noopener noreferrer" class="nav_btn">Contact Us</a>
+            </nav>
+        </header>
+
+  <div class="container">
+    <h1>Privacy Policy</h1>
+    <h2>Pro Fleet Recruiting</h2>
+
+    <p><strong>Last Updated:</strong> December 30, 2025</p>
+
+    <h3>1. Purpose of Privacy Policy</h3>
+      <p>
+        This Privacy Policy explains how we collect, use, store, and protect personal information submitted 
+        through our website. We are a truck driver recruiting agency that connects United States-based truck 
+        drivers with U.S. trucking companies. We are not a motor carrier and not the employer of drivers. 
+        By using this website and submitting information through our forms, you agree to the practices described 
+        in this Privacy Policy.
+      </p>
+
+    <h3>2. Scope of Services</h3>
+    <ul>
+      <li>Truck drivers seeking company driver positions</li>
+      <li>Jobs located within the United States</li>
+      <li>Individuals legally authorized to work in the United States</li>
+    </ul>
+
+    <h3>3. Information We Collect</h3>
+    <ul>
+      <li>Full name</li>
+      <li>Phone number</li>
+      <li>Email address</li>
+      <li>Driving experience details</li>
+      <li>Driver's License</li>
+      <li>Location of Residence (city/state)</li>
+      <li>Employment preferences</li>
+      <li>Driver Application Form</li>
+      <li>Contact Form</li>
+    </ul>
+      <p>
+        We do not collect: Race or ethnicity, Religion, Marital status, Medical information, 
+        Social Security numbers, Financial or banking information.
+      </p>
+
+    <h3>4. Purpose of Data Collection</h3>
+    <ul>
+      <li>Contacting drivers about job opportunities</li>
+      <li>Matching drivers with suitable trucking companies</li>
+      <li>Communicating job-related information</li>
+      <li>Referring drivers to verified trucking employers</li>
+    </ul>
+
+    <p><strong>We do not charge truck drivers any fees; our services are completely free for applicants.</strong></p>
+
+    <h3>5. How Information Is Used</h3>
+      <ul>
+        <li>Evaluate your job compatibility with available trucking positions.</li>
+        <li>Contact you with job opportunities and relevant offers.</li>
+        <li>Share necessary details with trucking companies <strong>only after determining suitability</strong>.</li>
+        <li>Once referred, the trucking company becomes your employer.</li>
+        <li>The trucking company's safety and hiring department handles onboarding, compliance, and employment decisions.</li>
+      </ul>
+
+    <h3>6. Information Sharing</h3>
+      <p>We may share your information in limited ways to support our recruiting services:</p>
+      <ul>
+        <li><strong>With verified U.S. trucking companies</strong> for employment consideration.</li>
+        <li><strong>With service providers</strong> who assist us in processing or storing data (they are contractually 
+          bound to maintain confidentiality and security).</li>
+        <li><strong>With legal authorities</strong> if required by law.</li>
+      </ul>
+      <p>We <strong>do not</strong>:</p>
+      <ul>
+        <li>Sell personal information.</li>
+        <li>Rent personal information.</li>
+        <li>Trade personal information.</li>
+        <li>Share data for marketing or advertising purposes.</li>
+      </ul>
+      <p><em>Information is shared only when relevant to job placement.</em></p>
+
+
+    <h3>7. Data Retention</h3>
+      <p>
+        We retain personal information only as long as necessary for recruiting purposes or until 
+        you request deletion. <strong>We maintain reasonable security measures to ensure your personal 
+        data is deleted or anonymized when no longer needed.</strong>
+      </p>
+
+    <h3>8. Your Rights</h3>
+    <ul>
+      <li>Request access to your personal information</li>
+      <li>Request correction of inaccurate data</li>
+      <li>Request deletion of your personal information</li>
+      <li>Withdraw consent at any time</li>
+      <li>Request restriction of processing</li>
+      <li>Receive your information in a structured, machine-readable format where technically feasible</li>
+    </ul>
+    
+    <p>Requests can be submitted via the 'Contact Us' section on the homepage.</p>
+
+    <h3>9. California Residents</h3>
+      <p>
+        Our services are not directed to residents of California. We do not sell personal information. 
+        California residents may contact us to request access, deletion, or other rights under CCPA.
+      </p>
+
+    <h3>10. Data Security</h3>
+      <p>
+        We take reasonable measures to protect personal information from unauthorized access, disclosure, 
+        or misuse. Access is restricted to authorized personnel, and regular audits detect unauthorized access.
+        In the event of a data breach, we will notify affected users as required by law.
+      </p>
+
+    <h3>11. Third-Party Websites</h3>
+      <p>
+        We may use third-party service providers to process or store personal information. These providers are 
+        contractually obligated to maintain confidentiality and comply with applicable privacy laws.
+      </p>
+
+    <h3>12. Cookies and Tracking</h3>
+      <p>Our website may use cookies and similar technologies to improve site performance and track website usage. 
+        Personal information is not sold or shared through cookies.</p>
+
+    <h3>13. Children's Privacy</h3>
+      <p>
+        This website is not intended for individuals under the age of 21. If we discover we have inadvertently 
+        collected information from a minor, it will be deleted promptly.
+      </p>
+
+    <h3>14. Recruiter Disclaimer</h3>
+      <p>
+        We are a recruiting agency only. We are not a motor carrier, not a trucking company, and not the employer 
+        of drivers. Final hiring decisions, employment terms, and safety compliance are handled solely by the 
+        trucking company.
+      </p>
+
+    <h3>15. Changes to This Privacy Policy</h3>
+      <p>
+        We may update this Privacy Policy from time to time. Updates will be posted on this page with a revised 
+        effective date. <strong>If any significant changes are made, users will be notified via email or a notice 
+        on the homepage.</strong> We encourage you to review this Privacy Policy periodically.
+      </p>
+
+    <h3>16. Governing Law</h3>
+      <p>This Privacy Policy is governed by the laws of the United States in which Pro Fleet Recruiting operates. 
+        Any disputes arising from this policy will be resolved under U.S. law.
+      </p>
+
+    <h3>17. Contact Information</h3>
+      <p>
+        For privacy-related questions or requests, please do not hesitate to contact us via the Contact Us form on 
+        our website.
+      </p>
+  </div>
+
+  <footer class="site-footer">
+    &copy; Pro Fleet Recruiting | All rights reserved
+  </footer>
+
+<!--HEADER DISAPPEAR-->
+<script>
+  let lastScrollY = window.scrollY;
+  const header = document.querySelector('.header');
+
+  window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY > lastScrollY && currentScrollY > 60) {
+      // scrolling down
+      header.classList.add('fade-out');
+    } else {
+      // scrolling up
+      header.classList.remove('fade-out');
+    }
+
+    lastScrollY = currentScrollY;
+  });
+</script>
+
+</body>
+</html>
