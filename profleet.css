@@ -1395,7 +1395,7 @@ html {
 }
 
 /* =========================================================
-   Samsung Galaxy S24 Ultra
+   Samsung Galaxy S24 Ultra  –  MOBILE-FIRST FIX
    1440 × 3120 px  |  19.5 : 9  |  512 ppi  |  portrait
    ========================================================= */
 @media only screen
@@ -1405,10 +1405,10 @@ html {
        and (orientation: portrait)
        and (pointer: coarse) {
 
-  /* --- HEADER (same line, lowered 12 px to close video gap) --------- */
+  /* ---------- header (already perfect, just keep it) ---------- */
   .header {
       position: fixed;
-      top: 12px;
+      top: 12px;               /* closes the gap under the video */
       left: 0;
       right: 0;
       height: 70px;
@@ -1431,7 +1431,7 @@ html {
       border-radius: 12px;
   }
 
-  /* --- HERO OVERLAY (centred, same width as about-us text) --------- */
+  /* ---------- hero text – same centred width as .text-container-about-us ---------- */
   .overvideo-overlay {
       width: 90%;
       max-width: 900px;
@@ -1441,7 +1441,7 @@ html {
   .overvideo-overlay h1 { font-size: 52px; }
   .overvideo-overlay p  { font-size: 26px; }
 
-  /* --- DRIVER IMAGE (centred, same width) -------------------------- */
+  /* ---------- driver picture – same centred width ---------- */
   .image-text-block .image-container {
       width: 90%;
       max-width: 900px;
@@ -1453,7 +1453,7 @@ html {
       border-radius: 30px;
   }
 
-  /* --- BLUR LIST (centred, same width) ----------------------------- */
+  /* ---------- blur list – same centred width ---------- */
   .blur-list-section {
       width: 90%;
       max-width: 900px;
@@ -1462,5 +1462,4 @@ html {
   }
   .blur-list li { font-size: 22px; }
 
-  /* --- any other S24-Ultra-only tweaks below ----------------------- */
 }
