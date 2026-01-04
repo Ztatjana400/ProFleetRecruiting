@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Driver Application Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="apply.css">
+  <style></style>
+</head>
+<body>
+    <div class="section section1">
+      <div class="container">
+
+<!-- HEADER SECTION --> 
+
+        <header class="header" id="header">
+          <div class="company">Pro Fleet Recruiting</div>
+            <nav class="nav">
+              <a href="profleet.html" class="nav_btn">Home</a>
+            </nav>
+        </header>
+
+  <div class="form-container">
+    <h1>Driver Application Form</h1>
+    <p>Please fill out all fields and upload the required documents.</p>
+
+    <!-- <form action="https://formsubmit.co/connect@profleetrecruit.com" method="POST" enctype="multipart/form-data"> -->
+    <form action="https://formspree.io/f/connect@profleetrecruit.com" method="POST" enctype="multipart/form-data">
+
+      <!-- Personal Info -->
+      <h2>Personal Information</h2>
+      <input type="text" name="full_name" placeholder="Full Name" required>
+      <input type="tel" name="phone" placeholder="Phone Number" required>
+      <input type="email" name="email" placeholder="Email Address" required>
+      <input type="text" name="city_state" placeholder="City and State of Residence" required>
+
+      <!-- Driving Experience -->
+      <h2>Driving Experience</h2>
+      <input type="text" name="driving_experience" placeholder="Years of Experience" required>
+
+      <!-- File Uploads -->
+      <h2>Documents</h2>
+      <label>Upload CDL (front)</label>
+      <input type="file" name="cdl-front" accept=".pdf,.doc,.docx,.jpg,.png" required>
+
+            <label>Upload CDL (back)</label>
+      <input type="file" name="cdl-back" accept=".pdf,.doc,.docx,.jpg,.png" required>
+
+      <label>Upload Previous CDL (if applicable)</label>
+      <input type="file" name="previous_cdl" accept=".pdf,.doc,.docx,.jpg,.png">
+
+      <label>Upload Current Medical Card</label>
+      <input type="file" name="medical_card" accept=".pdf,.doc,.docx,.jpg,.png" required>
+
+      <!-- Banking Info -->
+      <h2>Banking Information</h2>
+      <label>Do you have a business checking account?</label>
+      <select name="business_account" required>
+        <option value="">Select</option>
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+
+      <!-- Work Preferences -->
+      <h2>Work Preferences</h2>
+      <label>1. How long do you prefer to stay on the road?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="road_time" value="2 weeks - 2 days off" > 2 weeks - 2 days off</label>
+        <label><input type="radio" name="road_time" value="3 weeks - 3 days off"> 3 weeks - 3 days off</label>
+        <label><input type="radio" name="road_time" value="4 weeks - 4 days off"> 4 weeks - 4 days off</label>
+        <label><input type="radio" name="road_time" value="5 weeks - 5 days off"> 5 weeks - 5 days off</label>
+        <label><input type="radio" name="road_time" value="6 weeks - 6 days off"> 6 weeks - 6 days off</label>
+      </div>
+
+      <br>
+
+      <label>2. Are you comfortable flying?</label>
+      <select name="comfortable_flying">
+        <option value="">Select</option>
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+
+      <br>
+
+      <label>3. Do you have a pet that travels with you?</label>
+      <select name="pet_travels">
+        <option value="">Select</option>
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+
+      <br>
+
+      <label>4. Do you have any states you prefer not to drive in?</label>
+      <select name="avoid_states" multiple size="10">
+        <option>Alabama</option>
+        <option>Arkansas</option>
+        <option>Florida</option>
+        <option>Georgia</option>
+        <option>Illinois</option>
+        <option>Indiana</option>
+        <option>Iowa</option>
+        <option>Kansas</option>
+        <option>Kentucky</option>
+        <option>Louisiana</option>
+        <option>Maryland</option>
+        <option>Michigan</option>
+        <option>Minnesota</option>
+        <option>Mississippi</option>
+        <option>Missouri</option>
+        <option>Nebraska</option>
+        <option>New York</option>
+        <option>North Carolina</option>
+        <option>Ohio</option>
+        <option>Oklahoma</option>
+        <option>South Carolina</option>
+        <option>Tennessee</option>
+        <option>Texas</option>
+        <option>Virginia</option>
+        <option>West Virginia</option>
+        <option>Wisconsin</option>
+      </select>
+
+       <br>
+
+      <label>5. List full name of your last three carriers you drove for:</label>
+      <input type="text" name="last_three_carriers" placeholder="Carrier 1, Carrier 2, Carrier 3">
+
+      <label>6. Do you have experience with electronic logbooks (HOS)?</label>
+      <select name="hos_experience" required>
+        <option value="">Select</option>
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+
+      <br>
+
+      <label>7. Do you know how to complete a proper pre-trip inspection?</label>
+      <select name="pre_trip" required>
+        <option value="">Select</option>
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+
+      <!-- Hidden settings for FormSubmit -->
+      <input type="hidden" name="_subject" value="New Driver Application">
+      <!-- <input type="hidden" name="_captcha" value="false"> -->
+
+      <button type="submit">Submit Application</button>
+    </form>
+  </div>
+
+  <footer class="site-footer">
+    &copy; Pro Fleet Recruiting | All rights reserved
+  </footer>
+
+<!--HEADER DISAPPEAR-->
+<script>
+  let lastScrollY = window.scrollY;
+  const header = document.querySelector('.header');
+
+  window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY > lastScrollY && currentScrollY > 60) {
+      // scrolling down
+      header.classList.add('fade-out');
+    } else {
+      // scrolling up
+      header.classList.remove('fade-out');
+    }
+
+    lastScrollY = currentScrollY;
+  });
+</script>
+
+</body>
+</html>
