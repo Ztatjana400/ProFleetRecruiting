@@ -1187,14 +1187,30 @@ html {
 
   /* HEADER */
   .header {
-    flex-direction: column;        /* company on top, nav below */
-    justify-content: center;
-    align-items: center;
-    height: auto;
-    padding: 10px 12px;
-    background: rgba(28,31,38,0.95);
-    backdrop-filter: blur(4px);
-  }
+  display: flex;
+  flex-direction: column;  /* company on top, buttons below */
+  align-items: center;     /* center everything horizontally */
+  padding: 10px;
+}
+
+.nav {
+  display: flex;           /* makes child buttons sit in a row */
+  flex-direction: row;     /* default is row, just to be explicit */
+  flex-wrap: nowrap;       /* prevents wrapping to next line */
+  justify-content: center; /* center buttons horizontally */
+  gap: 10px;               /* space between buttons */
+}
+
+.nav a {
+  padding: 8px 12px;
+  text-decoration: none;
+  background-color: #1c1f26;
+  color: white;
+  border-radius: 12px;
+  font-size: 14px;
+  white-space: nowrap;     /* prevents button text from breaking */
+}
+
 
   .company {
     font-size: 20px;
@@ -1202,21 +1218,7 @@ html {
     text-align: center;
   }
 
-  .nav {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;             /* keep all buttons in one row */
-    justify-content: center;       /* center the buttons below company */
-    gap: 6px;
-    width: 100%;
-  }
-
-  .nav a {
-    font-size: 13px;
-    padding: 6px 10px;
-    white-space: nowrap;
-    margin: 0;
-  }
+  
 
   .nav .nav_btn {
     padding: 7px 12px;
@@ -1405,3 +1407,4 @@ html {
     gap: 12px;
   }
 }
+
