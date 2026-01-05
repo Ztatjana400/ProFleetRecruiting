@@ -1,0 +1,1200 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/*--------------------------------------------------------- HEADER ----------------------------------------------------------------------*/
+.header {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 65px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 30px;
+    box-sizing: border-box;
+
+    backdrop-filter: blur(2px);
+    background: rgba(33,36,42,0.2);
+    transition: background-color 0.3s ease;
+    z-index: 1000;
+
+    color: white;
+    font-weight: 600;
+}
+
+.inner {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.header.scrolled {
+    background: #1c1f26b2;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+}
+
+/*---------------------------------------------------HEADER-LEFT/COMPANY NAME -----------------------------------------------------------*/
+.company {
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 0.5px;
+    display: flex;     
+    gap: 20px;          
+}
+
+/*-------------------------------------------------------- NAV BAR ----------------------------------------------------------------------*/
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap; 
+}
+
+/*------------------------------------------------------- NAV LINKS ---------------------------------------------------------------------*/
+.nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 5px;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+
+/*------------------------------------------------------- NAV BUTTONS -------------------------------------------------------------------*/
+.nav .nav_btn {
+    background-color: #d17f03;
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: background-color 0.5s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    position: relative;       
+    overflow: hidden;         
+    z-index: 1; /*above shine */
+}
+
+.nav .nav_btn::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -75%;
+    width: 50%;
+    height: 200%;filter: blur(2px) drop-shadow(0 0 8px #d17f03);
+    background: linear-gradient(
+        120deg,
+        rgba(255,255,255,0) 0%,
+        rgba(255,255,255,0.4) 50%,
+        rgba(255,255,255,0) 100%
+    );
+    transform: rotate(45deg);
+    animation: shine 3s linear infinite; /* continuous shine */
+    z-index: 0;
+}
+
+@keyframes shine {
+    0% {
+        transform: translateX(-100%) rotate(25deg);
+    }
+    100% {
+        transform: translateX(300%) rotate(25deg);
+    }
+}
+
+/*------------------------------------------------------ NAV BUTTONS / HOVER ------------------------------------------------------------*/
+.nav .nav_btn:hover {
+    background-color: #d17f03;
+    transform: scale(1.08);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+/*----------------------------------------------------- SECTION 1 / VIDEO  --------------------------------------------------------------*/
+.overvideo {
+    position: relative;
+    height: 100vh;        
+    width: 100%;
+    overflow: hidden;
+
+/*---------------------------------------------------- SECTION 1 / FALLBACK IMAGE -------------------------------------------------------*/
+    background-image: url("PFRimages/truck_new_background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero-media {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+
+    opacity: 0;
+    transform: translateY(0);
+
+    transition: opacity 0.6s ease, transform 0.1s linear;
+}
+
+.hero-media.loaded {
+    opacity: 1;
+}
+
+.hero-video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;         
+    z-index: 0;           
+}
+
+/*------------------------------------------------- SECTION 1 /VIDEO - OVERLAY YEXT -----------------------------------------------------*/
+.overvideo-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #F7F2EE;
+}
+
+/*--------------------------------------------- SECTION 1 / VIDEO - OVERLAY SHADE -------------------------------------------------------*/
+.overlay-shade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+    z-index: 1;
+}
+
+/*--------------------------------------- SECTION 1 / VIDEO - OVERLAY TEXT h1 + p animation ---------------------------------------------*/
+.overvideo-overlay h1,
+.overvideo-overlay p {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeSlide 1s forwards;
+}
+
+.overvideo-overlay h1 {
+    animation-delay: 0.3s;
+    font-size: clamp(28px, 5vw, 48px); 
+    margin-bottom: 14px;
+}
+
+.overvideo-overlay p {
+    animation-delay: 0.6s;
+    font-size: clamp(16px, 3vw, 27px);
+    margin-top: 0;
+    max-width: 1000px;
+}
+
+@keyframes fadeSlide {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/*---------------------------------------------- SECTION 2 & 6 / MAIN CONTAINER ---------------------------------------------------------*/
+.section2and6 {
+    max-width: 100%;
+    margin: 100px auto;
+    padding: 0;
+    text-align: center;
+    color: #161629;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+/*----------------------------------------- SECRION 2 & 6 / GENERAL SECTION STYLING -----------------------------------------------------*/
+.image-text-block,
+.image-text-block2-coverage {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ---------------------------------------------- SECRION 2 & 6 /TEST BELOW IMAGE -------------------------------------------------------*/
+.section2and6 .below-img {
+    font-size: 30px;
+    padding-top: 16px;
+    margin-bottom: 16px;
+}
+
+.section2and6 .paragraph-1 {
+    font-size: 1rem;
+    color: #9ca3af;
+}
+
+/*-------------------------------------------------- SECTION 2 & 6 / COLORED BOXES ------------------------------------------------------*/
+.color-blocks {
+    position: relative;
+    max-width: 100%;
+    margin: 50px 0;
+    padding: 0 20px;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: stretch;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+.color-blocks > div {
+    flex: 1 1 250px;
+    max-width: 300px;
+    padding: 24px 22px;
+    border-radius: 15px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s, box-shadow 0.4s;
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: linear-gradient(145deg, #fff, #f0f0f0);
+
+/*------------------------------------------------------- SHINE EFFECT ------------------------------------------------------------------*/
+    position: relative;
+    overflow: hidden;
+}
+
+/*----------------------------------------- SECTION 2 / COLORED BOXES/ INSIDE TEXT ------------------------------------------------------*/
+.color-blocks h3 {
+    margin-bottom: 14px;
+    color: #161629;
+    align-self: center;
+}
+
+.color-blocks p {
+    color: #161629;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+/*------------------------------------------- SECTION 2 / COLORED BOXES/ HOVER ----------------------------------------------------------*/
+.color-blocks > div:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/*-------------------------------------- SECTION 2 & 6 / COLORED BOXES / SHINE EFFECT ---------------------------------------------------*/
+.color-blocks > div::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%; /* start off to the left */
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        rgba(255,255,255,0) 0%,
+        rgba(255,255,255,0.6) 50%,
+        rgba(255,255,255,0) 100%
+    );
+    transform: skewX(-25deg);
+    z-index: 2;
+    pointer-events: none; /* do not block hover */
+}
+
+/*-------------------------------------  SECTION 2 & 6 / COLORED BOXES / HOVER SHINE EFFECT ---------------------------------------------*/
+.color-blocks > div:hover::before {
+    animation: shineMove 1s forwards; 
+}
+
+@keyframes shineMove {
+    0% { left: -150%; }
+    100% { left: 150%; }
+}
+
+/*-------------------------------------------------------------- SECTION 3 --------------------------------------------------------------*/
+.section3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+.image-text-block {
+    background-image: url(PFRimages/dark-theme2.jpg);
+    background-position: left;
+    left: 0;
+    right: 0;
+    display: flex;
+    font-size: 24px;
+    font-family: 'Roboto', Arial, sans-serif;
+    border-radius: 10px;
+}
+
+/*------------------------------------------------------- SECTION 3 FULL BLOCK ----------------------------------------------------------*/
+.text-container {
+    width: 50%;
+    max-width: 600px;      
+    margin: 0 auto;     
+    padding: 40px;       
+    box-sizing: border-box;
+}
+
+.image-text-block .text-container {
+    padding: 0 2px;
+}
+
+/* -------------------------------------------- SECTION 3 / IMAGE DRIVER ---------------------------------------------------------------- */
+.image-container {
+    flex: 0 0 40%;                 /* image takes 40% of row */
+    max-width: 420px;              /* larger on desktop */
+    min-width: 280px;              /* never too small */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-text-block .image-container img {
+    width: 100%;
+    height: auto;
+    max-width: 420px;   /* desktop size */
+    border-radius: 160px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* LOGO */
+.image-container1 {
+    width: 100%;
+    max-width: 250px;
+    margin: 0 auto;
+    border-radius: 190px;
+    display: block;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.image-container2 {
+    width: 100%;
+    max-width: 500px;                   /*CHECK RECOMENDED 600px*/
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 30px;
+}
+
+.image-container2 img {
+    width: 100%;
+    height: auto;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+
+/*-------------------------------------------------- SECTION 3 / NOW HIRIN ENTIRE TEXT --------------------------------------------------*/
+[class^="image-container"] img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.3);
+}
+
+[class^="image-container1"] img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.3);
+}
+/*------------------------------------------- SECTION 3 DRIVER / FULL TEXT CONTAINER ----------------------------------------------------*/
+.blur-list ::marker {
+    color: transparent;
+}
+
+.blur-list-section {
+    background: rgba(10, 30, 60, 0.124); 
+    backdrop-filter: blur(10px);       
+    border-radius: 15px;
+    padding: 40px 30px;
+    max-width: 700px;
+    margin: 50px auto;
+    text-align: left;
+    color: #F7F7F7;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.087);
+}
+
+.blur-list-section h2 {
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 25px;
+    color: #FFD700; 
+}
+
+.blur-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.blur-list li {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    margin-bottom: 16px;
+    background: rgba(255, 255, 255, 0.05);  
+    padding: 12px 20px;
+    border-radius: 12px;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.blur-list li strong {
+    display: block;
+    font-size: 22px;
+    color: #FFD700;
+}
+
+.blur-list li:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.blur-list li::before {
+    content: "✔";
+    display: inline-block;
+    width: 24px;         
+    margin-right: 12px;  
+    color: #FFD700;
+    font-weight: bold;
+    flex-shrink: 0;    
+}
+
+.text-container h1,
+.text-container ul {
+    margin-left: 60px;
+    padding-left: 10px;
+}
+
+.about-us,
+.about {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Base styles for desktop */
+.benefits-p,
+.benefits-list {
+    list-style-type: disc;      /* normal bullets */
+    list-style-position: outside; /* bullets outside text */
+    margin: 20px 0;
+   
+    font-size: 24px;
+    color: #F5F7FA;
+    max-width: 100%;
+    line-height: 1.5;           /* better spacing */
+}
+
+.benefits-p li,
+.benefits-list li {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.about-us-list {
+    margin-top: 20px; /* space above the list */
+    padding-left: 20px; /* optional for indentation */
+    padding: 5px;
+    font-size: 24px;
+    position: relative;
+}
+
+.about-us-p {
+    margin-bottom: 20px;    
+    max-width: 600px;      /* prevents very long lines */
+    color: #f0e9e9;
+    padding: 5px;
+    font-size: 30px;
+    position: relative;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+.image-text-block2-coverage {
+    display: flex;
+    max-width: 100%;
+    gap: 40px;               /* space between image and text */
+    padding: 40px;      /* 10px from left and right, 60px top/bottom */
+    flex-wrap: wrap;          /* responsive wrap */
+    border-radius: 12px;
+    background-image: url(PFRimages/dark-theme2.jpg);
+    background-position: left;
+
+    justify-content: center;
+    align-items: center; /* vertical centering */
+} 
+
+.image-text-block2-coverage .text-container2-coverage {
+    flex: 1;                 
+    font-size: 24px;
+    margin-top: 80px;
+}
+
+.image-text-block2-coverage .text-container h3 {
+    font-size: 26px;
+    margin-bottom: 15px;
+    color: #e5e7eb;
+    align-items: flex-start;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+.image-text-block2 .about-us-text-container h3 {
+    font-size: 26px;
+    margin-bottom: 15px;
+    color: #f0ebeb;
+    align-items: flex-start;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+/*SECTION DIVs*/
+.section2 {
+    display: flex;
+    min-height: 100vh; 
+    background-color: rgb(229, 233, 229);
+}
+
+/*---------------------------------------------- SECTION 4 / ABOUT US - TEXT + LOGO -----------------------------------------------------*/
+.about-us-image-text-block .section3 {
+    display: flex;
+    align-items: center;      /* vertical alignment */
+    justify-content: center; /* keep items close together */
+    gap: 20px;                /* space between text and logo */
+    flex-wrap: wrap;          /* allows stacking on small screens */
+}
+
+.about-us-image-text-block {
+    background-color: rgb(239, 235, 229);
+    color: black;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+/* Text container */
+.text-container-about-us {
+    flex: 1 1 auto;             /* take available space */
+    max-width: 900px;           /* control width */
+    padding-left: 200px;         /* add some space from the left edge */
+    padding-right: 0;           /* keep right padding optional */
+    margin: 0;                  /* remove extra margins */
+    box-sizing: border-box;     /* ensure padding is included */
+    justify-content: center; /* keep items close together */
+}
+
+/*---------------------------------------------------------------------------------------------------------------------------------------*/
+ /*--------------------------------------------------- SECTION 4 / ABOUT US -------------------------------------------------------------*/
+.section4 {
+    display:contents;
+    background-color: rgb(15, 29, 67);  
+    background-image: url(PFRimages/cream.jpg);
+    background-position: center; 
+}
+/*---------------------------------------------------------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------ SECTION 5 / ??? ----------------------------------------------------------*/
+.section5 {
+    display: flex;
+    min-height: 100vh;   
+    background-color: #12141a; 
+    color: rgb(204, 190, 156);
+}
+
+#about-us {
+    scroll-margin-top: 80px; 
+}
+
+/*---------------------------------------- SECTION 5 (Nationwide...Our recruiting team...) ----------------------------------------------*/
+.benefits-p2 {
+    color: rgb(244, 240, 240);
+    font-size: 22px;
+    text-align: center;
+    max-width: 1000px;
+}
+
+/*ABOUT US FULL TEXT*/
+.image-text-block .text-container-about-us {
+    margin: 0;
+    padding: 0 20px;
+}
+
+.image-text-block .text-container h3 {
+    margin: 0 0 15px;
+    padding: 0;
+    padding-left: 60px;
+    font-size: 24px;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+.image-text-block .text-container p {
+    margin: 0 0 80px;
+    padding-left: 50px;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+/* BENEFITS */
+.benefits {
+    font-size: 24px;
+    color: white;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+/* ABOUT US H3 */
+.about-us {
+    font-size: 30px;
+    color: black;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+/* ABOUT US FULL TEXT */
+.about {
+    font-size: 24px;
+    max-width: 800px;
+    /* margin-left: 100px; */
+}
+
+/*---------------------------------------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------------------- SECTION 5 / ZOOM EARTH IMAGE -----------------------------------------------------*/
+.zoom-image {
+    width: 100%;
+    max-width: 600px;
+    transform: scale(1.4);
+    transition: transform 1s ease;
+    display: block;
+    margin: 0 auto;
+}
+
+.zoom-image.visible {
+    transform: scale(1);
+}
+
+/*---------------------------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------- SECTION 7 / BACKGROUND BEHIND ENTIRE QUICK FORM ---------------------------------------*/
+/* .inner-background {
+    background-image: url(PFRimages/cream.jpg);
+}
+
+/*----------------------------------------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------------------------- FOOTER ----------------------------------------------------------------------*/
+.site-footer {
+    background: #1C1F26;
+    color: #E5E7EB; /* soft white text */
+    padding: 30px 20px;
+    text-align: center;
+    font-size: 14px; 
+    font-family: 'Roboto', Arial, sans-serif;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.site-footer .footer-content {
+    width: 100%; 
+    max-width: 1200px; 
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.site-footer .footer-links {
+    margin-top: 10px;
+}
+
+.site-footer .footer-links a {
+    color: #E5E7EB;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.site-footer .footer-links a:hover {
+    color: #B85C3D; /* accent color */
+    text-decoration: underline;
+}
+
+/*-------------------------------------------------------- FOOTER / SOCIAL ICONS --------------------------------------------------------*/
+.social-icons {
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    gap: 18px;
+    margin-bottom: 10px;     
+    position:relative;    
+}
+
+/* Base style for links */
+.social-icons a {
+    text-decoration: none;
+    font-size: 26px;
+    transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+/* Facebook color */
+.social-icons a .fa-facebook {
+    color: #1877F2;
+}
+
+/* Instagram gradient fill */
+.instagram-icon {
+    background: radial-gradient(
+        circle at 30% 30%,
+        #feda75,
+        #fa7e1e,
+        #d62976,
+        #962fbf,
+        #4f5bd5
+    );
+    background-clip: text;
+    -webkit-background-clip: text; /* Safari support */
+    color: transparent;
+}
+
+/* Hover effect */
+.social-icons a:hover {
+    transform: scale(1.10) translateY(-3px);
+    filter: drop-shadow(0 6px 12px rgba(0,0,0,0.25));
+}
+
+/*---------------------------------------------------------------------------------------------------------------------------------------*/
+/* =================================================== MEDIA QUERIES CLEANED =========================================================== */
+/*===================================================== MOBILE: up to 768px =============================================================*/
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+    }
+
+    .nav {
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    /* Section 3 & Images */
+    .section3 {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+        align-items: center;
+    }
+
+    .image-container {
+        margin: 0 auto;
+    }
+
+    /* Text Containers */
+    .text-container,
+    .text-container-about-us,
+    .text-container2-coverage,
+    .about-us,
+    .about {
+        text-align: center;
+        padding-left: 10px;
+        padding-right: 10px;
+        width: 100%;
+        box-sizing: border-box;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Benefits */
+    .image-text-block .benefits,
+    .image-text-block .benefits-p,
+    .image-text-block .benefits-list,
+    .benefits-p,
+    .benefits-list {
+        font-size: 22px;
+        padding-left: 15px;
+    }
+
+    /* Scroll Adjustment */
+    #about-us {
+        scroll-margin-top: 100px;
+    }
+}
+
+/*---------------------------------------------------------------------------------------------------------------------------------------*/
+/*================================================ MOBILE: up to 480px ==================================================================*/
+    @media (max-width: 480px) {
+        .overvideo-overlay h1 {
+            font-size: 21px;
+        }
+
+        .image-text-block .text-container {
+            padding: 0 auto;
+        }
+
+        .benefits-p, .benefits-list {
+            font-size: 19px;
+            padding-left: 0 auto;
+        }   
+    }
+
+/*---------------------------------------------------------------------------------------------------------------------------------------*/
+/*=============================================== MOBILE: up to 412 x 915px ==============================================================*/
+@media (width: 412px) and (height: 915px) and (orientation: portrait) {
+
+  /* Header */
+  .header {
+    flex-direction: row;        /* buttons + company name in one row */
+    justify-content: space-between;
+    align-items: center;
+    height: 65px;               /* fixed header height */
+    padding: 8px 12px;
+    background: rgba(28,31,38,0.95);
+    backdrop-filter: blur(4px);
+  }
+
+  .company {
+    font-size: 20px;
+    margin: 0;                  /* remove extra bottom margin */
+  }
+
+  /* Nav in one row */
+
+
+  .nav a {
+    font-size: 13px;
+    padding: 6px 10px;
+    margin: 0;
+    white-space: nowrap;         /* prevent line breaks */
+  }
+
+  .nav .nav_btn {
+    padding: 6px 12px;
+    font-size: 13px;
+    border-radius: 14px;
+     flex-shrink: 0; 
+    justify-content: center;
+    align-items:flex-start;
+  }
+
+  body {
+    padding-top: 75px;           /* ensure header doesn't overlap content */
+    overflow-x: hidden;
+  }
+
+  /* HIDE hamburger on desktop */
+.menu-toggle {
+    display: none;  /* desktop: hidden */
+}
+
+/* MOBILE: show hamburger, hide nav initially */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;          /* show hamburger on small screens */
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 6px;
+    }
+
+    .menu-toggle span {
+        width: 26px;
+        height: 3px;
+        background: white;
+        border-radius: 2px;
+        transition: 0.3s ease;
+    }
+
+    .nav {
+        display: none;          /* hide nav by default */
+        flex-direction: column;
+        position: absolute;
+        top: 65px;
+        right: 0;
+        background: rgba(28,31,38,0.95);
+        border-radius: 12px;
+        padding: 12px;
+        gap: 10px;
+        z-index: 999;
+    }
+
+    .nav.open {
+        display: flex;          /* show nav when hamburger clicked */
+    }
+}
+
+ 
+  /*------------------------------------------- SECTION 3 / DRIVER IMAGE + TEXT ---------------------------------------------------------*/
+  .image-text-block .section3 {
+    flex-direction: column;       /* stack image + text */
+    align-items: center;
+    text-align: center;
+    padding: 20px 10px;
+  }
+
+  .image-text-block .image-container {
+    width: 80%;
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    transform: translateX(-10px); /* move slightly left */
+  }
+
+  .image-text-block .text-container {
+    width: 90%;
+    max-width: 100px;
+    margin: 20px auto 0 auto;
+    text-align: left;
+    transform: translateX(-10px); /* move text slightly left */
+    padding: 10px;
+  }
+
+  .blur-list-section {
+    max-width: 100%;
+    margin: 20px auto;
+    padding: 25px 15px;
+    text-align: left;
+  }
+
+  .blur-list-section li {
+    font-size: 16px;
+    padding: 10px 15px;
+  }
+
+  /*--------------------------------------------- SECTION 4 ABOUT US + LOGO -------------------------------------------------------------*/
+  .about-us-image-text-block .section3 {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .text-container-about-us {
+    padding: 0 10px;
+    max-width: 90%;
+    text-align: center;
+  }
+
+  
+  /* SECTION 5 - COVERAGE IMAGE */
+  .image-text-block2-coverage {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 10px;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .image-text-block2-coverage .text-container2-coverage {
+    flex: 1;
+    width: 90%;
+    max-width: 350px;
+    margin: 0 auto;
+    font-size: 18px;
+    text-align: left;
+  }
+
+/*--------------------------------------------------- COLORED BOXES ---------------------------------------------------------------------*/
+.color-blocks > div {
+    flex: 1 1 250px;
+    max-width: 300px;
+    padding: 24px 22px;
+    border-radius: 15px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s, box-shadow 0.4s;
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: linear-gradient(145deg, #fff, #f0f0f0);
+
+    /* shine effect setup */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Text inside colored boxes */
+.color-blocks h3 {
+    margin-bottom: 14px;
+    color: #161629;
+    align-self: center;
+}
+
+.color-blocks p {
+    color: #161629;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    position: relative;
+    z-index: 1; /* text above shine */
+}
+
+/* Hover effect for box */
+.color-blocks > div:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/*------------------------------------------------------- FOOTER ------------------------------------------------------------------------*/
+    .site-footer .footer-content {
+        max-width: 100%;
+        margin: 0;
+        padding: 0 15px;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    .site-footer .social-icons {
+        justify-content: center;
+        margin: 0 auto;
+        gap: 12px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .image-text-block .image-container img {
+        max-width: 480px;
+    }
+}
+
+/* ================= MOBILE HAMBURGER HEADER ================= */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: white;
+  margin: 4px 0;
+  transition: 0.3s ease;
+}
+
+/* -------- MOBILE ONLY -------- */
+@media (max-width: 480px) {
+
+   .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    flex-direction: row;          /* 🔑 FORCE HORIZONTAL */
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 56px;
+    padding: 0 12px;
+    box-sizing: border-box;
+  }
+
+  .company {
+    font-size: 18px;
+    white-space: nowrap;
+  }
+
+  /* show hamburger */
+  .menu-toggle {
+    display: block;
+  }
+
+  /* hide nav initially */
+  .nav {
+    position: absolute;
+    top: 56px;
+    left: 0;
+
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 4px;
+
+    background: transparent;
+    padding: 8px 6px;
+    padding-left: 6px;
+
+    opacity: 0;               /* start hidden */
+    transform: translateY(-10px); /* slightly above */
+    pointer-events: none;      /* prevent clicks when hidden */
+    transition: opacity 0.6s ease, transform 0.6s ease; /* smooth fade & slide */
+  }
+
+  .nav.active {
+    opacity: 1;               
+    transform: translateY(0); 
+    pointer-events: auto;     
+  }
+
+  /* when active */
+  .nav.active {
+    display: flex;
+  }
+
+  .nav .nav_btn {
+    flex: 1 1 auto;      
+    min-width: 70px;     
+    text-align: center;
+    font-size: 13px;
+    padding: 8px 4px;  
+    border-radius: 10px;
+    white-space: nowrap;  
+    box-sizing: border-box;
+  }
+
+  .site-footer .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+  .site-footer .social-icons {
+    display: flex;
+    justify-content: center;  
+    gap: 12px;               
+  }
+
+  .site-footer p {
+    margin: 0;          
+  }
+
+  .site-footer .footer-links {
+    display: flex;
+    justify-content: center;  
+    margin-top: 0;
+    gap: 6px;             
+  }
+
+  .site-footer .footer-link {
+    white-space: nowrap;       
+  }
+}
+
+/*=========================================================================================================================================*/
+
+
