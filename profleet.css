@@ -1150,6 +1150,7 @@ html {
   /* when active */
   .nav.active {
     display: flex;
+    transform: translateX(-5px);
   }
 
   .nav .nav_btn {
@@ -1161,7 +1162,7 @@ html {
     border-radius: 10px;
     white-space: nowrap;  
     box-sizing: border-box;
-      transform: translateX(-7px);
+      transform: translateX(-5px);
   }
 
   .site-footer .footer-content {
@@ -1197,6 +1198,7 @@ html {
 }
 
 /*=========================================================================================================================================*/
+
 
 
 
