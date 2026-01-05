@@ -1,0 +1,267 @@
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+ font-family: 'Roboto', Arial, sans-serif;
+  font-weight: 300;
+  color: #302c2c;
+  line-height: 1.7;
+  margin: 0;
+  padding: 0;
+  background: #efebe2;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  background: rgba(33,36,42,0.9);
+  z-index: 1000;
+  color: rgb(238, 224, 224);
+  font-weight: 600;
+  box-sizing: border-box;
+  white-space: nowrap;  
+  transition: opacity 2s ease, background-color 0.35s ease;
+}
+
+.header.fade-out {
+  opacity: 0;
+  pointer-events:none;
+}
+
+.company {
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.4px;
+    display: flex;     
+    gap: 10px;         
+    flex-shrink: 0; 
+    margin-left: 0;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+     flex-shrink: 0;
+}  
+
+.nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 5px;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    
+}
+
+.nav .nav_btn {
+    background-color: #d17f03;
+    padding: 2px 11px;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: background-color 0.5s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    position: relative;     
+    overflow: hidden;    
+    z-index: 1;             
+    text-decoration: none; 
+}
+
+.nav .nav_btn::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 50%;
+  height: 200%;filter: blur(2px) drop-shadow(0 0 8px #d17f03);
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.4) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  transform: rotate(45deg);
+  animation: shine 3s linear infinite;
+  z-index: 0;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) rotate(25deg);
+  }
+  100% {
+      transform: translateX(300%) rotate(25deg);
+  }
+}
+
+.nav .nav_btn:hover {
+  background-color: #d17f03;
+  transform: scale(1.08);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+.company {
+  font-weight: 700;
+  font-size: 25px;
+  letter-spacing: 0.5px;
+  display: flex;   
+  gap: 20px;        
+}
+
+.form-container {
+  max-width: 800px;
+  top: 80px;
+  margin: 50px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+}
+
+h1, h2 {
+  color: #161e44;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+p {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #555;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="file"],
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.checkbox-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* 1. OTR */
+.radio-group label {
+  display: block;      
+  margin-bottom: 8px;  
+  font-weight: 300;    
+  color: #161629;
+}
+
+.radio-group input[type="radio"] {
+  margin-right: 10px;  
+}
+
+select[name="avoid_states"] {
+  font-family: 'Roboto', Arial, sans-serif;
+  width: 300px;
+  max-width: 100%;
+  display: block;
+  margin: 13px auto 0px;
+}
+
+button[type="submit"] {
+  font-family: 'Roboto', Arial, sans-serif;
+  background: linear-gradient(145deg, #6f91ec, #120a04);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  display: block;     
+  margin: 0 auto;
+}
+
+button[type="submit"]:hover {
+  background: linear-gradient(145deg, #7ca2de, #1d57d6);
+}
+
+button[type="submit"]:active {
+  background: linear-gradient(145deg, #8090b2, #2950bc);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.site-footer {
+  font-family: 'Roboto', Arial, sans-serif;
+  flex-shrink: 0; 
+  width: 100%;
+  background: #1C1F26;
+  color: #E5E7EB;
+  padding: 30px 0;
+  text-align: center;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 620px) {
+  .container {
+    width: 100%;
+    margin: 80px auto 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    margin-top: 115px; 
+  }
+}
+
+/* ---------------- MOBILE HEADER FIX ---------------- */
+@media (max-width: 480px) {
+
+  .header {
+    height: 56px;
+    padding: 0 10px;
+  }
+
+  .company {
+    font-size: 16px;      /* smaller company name */
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+  }
+
+  .nav {
+    flex-wrap: nowrap;    /* KEEP BUTTONS IN ONE LINE */
+    gap: 4px;
+  }
+
+  .nav .nav_btn {
+    font-size: 13px;
+    padding: 2px 9px;
+    border-radius: 10px;
+    white-space: nowrap;
+  }
+}
