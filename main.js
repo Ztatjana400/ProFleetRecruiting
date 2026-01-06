@@ -44,18 +44,18 @@ window.addEventListener("scroll", () => {
 });
 
 
-document.querySelector('form').addEventListener('submit', function(e){
-    e.preventDefault(); // prevent default alert
-    // Submit form via SilentForms automatically
-    alert("Thank you! Your message has been sent."); // optional, or remove
-    const form = e.target;
-    const thanks = document.createElement('p');
-    thanks.textContent = "Thank you! We received your message.";
-    thanks.style.color = "#1C1F26";
-    thanks.style.fontWeight = "600";
-    form.appendChild(thanks);
-    form.reset();
-});
+// document.querySelector('form').addEventListener('submit', function(e){
+//     e.preventDefault(); // prevent default alert
+//     // Submit form via SilentForms automatically
+//     alert("Thank you! Your message has been sent."); // optional, or remove
+//     const form = e.target;
+//     const thanks = document.createElement('p');
+//     thanks.textContent = "Thank you! We received your message.";
+//     thanks.style.color = "#1C1F26";
+//     thanks.style.fontWeight = "600";
+//     form.appendChild(thanks);
+//     form.reset();
+// });
 
 
 let latestScrollY = 0;
@@ -67,9 +67,10 @@ window.addEventListener('scroll', () => {
   });
 });
 
-document.querySelector('form').addEventListener('submit', function(e){
-  alert("Thank you! Your message has been sent.");
-  // Do not prevent default unless you handle submission via JS
-});
+// document.querySelector('form').addEventListener('submit', function(e){
+//   alert("Thank you! Your message has been sent.");
+//   // Do not prevent default unless you handle submission via JS
+// });
+
 
 
