@@ -1,9 +1,4 @@
 
-document.querySelector('form').addEventListener('submit', function(e){
-  alert("Thank you! Your message has been sent.");
-});
-
-
 // Scroll-trigger animations
 const faders = document.querySelectorAll('.section3, .image-text-block2-coverage');
 
@@ -76,4 +71,5 @@ document.querySelector('form').addEventListener('submit', function(e){
   alert("Thank you! Your message has been sent.");
   // Do not prevent default unless you handle submission via JS
 });
+
 
