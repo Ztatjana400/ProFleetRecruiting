@@ -1661,8 +1661,8 @@ section {
   }
 
   .stat-label {
-    font-size: 0.6rem;
-    letter-spacing: 0.2px;
+    font-size: 0.4rem;
+    letter-spacing: 0.15px;
   }
 
   /* Tighter section padding */
