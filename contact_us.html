@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Contact Us - Pro Fleet Recruiting</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <style>
+      :root {
+        --primary: #FF6B00;
+        --primary-dark: #E55A00;
+        --secondary: #1A1A2E;
+        --dark: #0F0F1A;
+        --light: #F5F5F5;
+        --gray: #8B8B9A;
+        --glass: rgba(255, 255, 255, 0.05);
+        --input-bg: rgba(255, 255, 255, 0.08);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: 'Roboto', 'Inter', sans-serif;
+        font-weight: 300;
+        background-color: var(--dark);
+        color: var(--light);
+        line-height: 1.7;
+        overflow-x: hidden;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      h1, h2, h3, h4 {
+        font-family: 'Oswald', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      /* Header & Navigation - FULL WIDTH */
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        z-index: 1000;
+        background: rgba(15, 15, 26, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 107, 0, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      .header.scrolled {
+        background: rgba(15, 15, 26, 0.98);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+      }
+
+      .header.fade-out {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .header-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
+
+      .company {
+        font-family: 'Oswald', sans-serif;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--light);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex-shrink: 0;
+      }
+
+      .company span {
+        color: var(--primary);
+      }
+
+      .company i {
+        color: var(--primary);
+        font-size: 1.5rem;
+      }
+
+      .nav {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        flex-shrink: 0;
+      }
+
+      .nav_btn {
+        background: var(--primary);
+        color: white;
+        padding: 0.6rem 1.2rem;
+        border-radius: 4px;
+        font-family: 'Oswald', sans-serif;
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
+        position: relative;
+        overflow: hidden;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
+      .nav_btn::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -75%;
+        width: 50%;
+        height: 200%;
+        background: linear-gradient(
+          120deg,
+          rgba(255,255,255,0) 0%,
+          rgba(255,255,255,0.4) 50%,
+          rgba(255,255,255,0) 100%
+        );
+        transform: rotate(25deg);
+        animation: shine 3s linear infinite;
+        z-index: 0;
+      }
+
+      @keyframes shine {
+        0% {
+          transform: translateX(-100%) rotate(25deg);
+        }
+        100% {
+          transform: translateX(300%) rotate(25deg);
+        }
+      }
+
+      .nav_btn:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: 0 6px 20px rgba(255, 107, 0, 0.4);
+      }
+
+      /* Main Content - SEPARATE FROM HEADER */
+      .main-content {
+        flex: 1;
+        padding-top: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: calc(100vh - 80px);
+        width: 100%;
+      }
+
+      .form-wrapper {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+
+      .form-container {
+        background: var(--glass);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 50px;
+        border-radius: 16px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(10px);
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 60px;
+      }
+
+      .form-container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, transparent, var(--primary), transparent);
+      }
+
+      .form-container:hover {
+        border-color: rgba(255, 107, 0, 0.3);
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
+      }
+
+      .contact-icon {
+        width: 80px;
+        height: 80px;
+        background: rgba(255, 107, 0, 0.1);
+        border: 2px solid var(--primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 2rem;
+        font-size: 2rem;
+        color: var(--primary);
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 107, 0, 0.4); }
+        50% { transform: scale(1.05); box-shadow: 0 0 20px 10px rgba(255, 107, 0, 0); }
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 0.5rem;
+        color: white;
+      }
+
+      h1 span {
+        color: var(--primary);
+      }
+
+      .form-container > p {
+        text-align: center;
+        margin-bottom: 2.5rem;
+        color: var(--gray);
+        font-size: 1.1rem;
+      }
+
+      /* Form Inputs */
+      .form-group {
+        margin-bottom: 1.5rem;
+        position: relative;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--light);
+        font-weight: 400;
+        font-size: 0.95rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-family: 'Oswald', sans-serif;
+      }
+
+      .form-group label i {
+        color: var(--primary);
+        margin-right: 0.5rem;
+        width: 20px;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      textarea {
+        width: 100%;
+        padding: 16px 18px;
+        background: var(--input-bg);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 10px;
+        color: var(--light);
+        font-family: 'Roboto', sans-serif;
+        font-size: 1rem;
+        font-weight: 300;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+      }
+
+      textarea {
+        min-height: 150px;
+        resize: vertical;
+        line-height: 1.6;
+      }
+
+      input[type="text"]:focus,
+      input[type="email"]:focus,
+      input[type="tel"]:focus,
+      textarea:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 4px rgba(255, 107, 0, 0.15);
+        background: rgba(255, 255, 255, 0.12);
+      }
+
+      input::placeholder,
+      textarea::placeholder {
+        color: var(--gray);
+      }
+
+      /* Submit Button */
+      button[type="submit"] {
+        font-family: 'Oswald', sans-serif;
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 18px 48px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(255, 107, 0, 0.3);
+        display: block;
+        margin: 2.5rem auto 0;
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+      }
+
+      button[type="submit"]::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -75%;
+        width: 50%;
+        height: 200%;
+        background: linear-gradient(
+          120deg,
+          rgba(255,255,255,0) 0%,
+          rgba(255,255,255,0.4) 50%,
+          rgba(255,255,255,0) 100%
+        );
+        transform: rotate(25deg);
+        animation: shine 3s linear infinite;
+      }
+
+      button[type="submit"]:hover {
+        background: var(--primary-dark);
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(255, 107, 0, 0.4);
+      }
+
+      button[type="submit"]:active {
+        transform: translateY(-1px);
+      }
+
+      /* Contact Info Box */
+      .contact-info {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        margin-top: 2.5rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .info-item {
+        text-align: center;
+        padding: 1rem;
+      }
+
+      .info-item i {
+        font-size: 1.5rem;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+        display: block;
+      }
+
+      .info-item span {
+        font-size: 0.85rem;
+        color: var(--gray);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-family: 'Oswald', sans-serif;
+      }
+
+      /* Footer */
+      .site-footer {
+        background: #0a0a12;
+        padding: 2rem;
+        border-top: 1px solid rgba(255, 107, 0, 0.2);
+        text-align: center;
+        width: 100%;
+      }
+
+      .site-footer p {
+        color: var(--gray);
+        font-size: 0.9rem;
+        margin: 0;
+      }
+
+      /* Mobile Optimizations */
+      @media (max-width: 968px) {
+        .header-container {
+          padding: 0.8rem 1rem;
+        }
+
+        .company {
+          font-size: 1.4rem;
+        }
+
+        .company i {
+          font-size: 1.2rem;
+        }
+
+        .nav {
+          gap: 0.75rem;
+        }
+
+        .nav_btn {
+          padding: 0.5rem 1rem;
+          font-size: 0.8rem;
+        }
+
+        .main-content {
+          padding-top: 80px;
+        }
+
+        .form-wrapper {
+          padding: 0 1rem;
+        }
+
+        .form-container {
+          padding: 40px 30px;
+          margin-bottom: 40px;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        .contact-icon {
+          width: 70px;
+          height: 70px;
+          font-size: 1.75rem;
+        }
+
+        .contact-info {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .header-container {
+          padding: 0.6rem 0.75rem;
+        }
+
+        .company {
+          font-size: 1.1rem;
+        }
+
+        .company i {
+          font-size: 1rem;
+        }
+
+        .nav {
+          gap: 0.5rem;
+        }
+
+        .nav_btn {
+          padding: 0.4rem 0.8rem;
+          font-size: 0.75rem;
+        }
+
+        .main-content {
+          padding-top: 70px;
+        }
+
+        .form-wrapper {
+          padding: 0 0.75rem;
+        }
+
+        .form-container {
+          padding: 30px 20px;
+          margin-bottom: 30px;
+          border-radius: 12px;
+        }
+
+        .contact-icon {
+          width: 60px;
+          height: 60px;
+          font-size: 1.5rem;
+          margin-bottom: 1.5rem;
+        }
+
+        h1 {
+          font-size: 1.6rem;
+        }
+
+        .form-container > p {
+          font-size: 0.95rem;
+          margin-bottom: 2rem;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea {
+          padding: 14px 16px;
+          font-size: 0.95rem;
+        }
+
+        textarea {
+          min-height: 120px;
+        }
+
+        button[type="submit"] {
+          padding: 16px 36px;
+          font-size: 1rem;
+        }
+
+        .info-item i {
+          font-size: 1.25rem;
+        }
+
+        .info-item span {
+          font-size: 0.8rem;
+        }
+      }
+
+      @media (max-width: 360px) {
+        .header-container {
+          padding: 0.5rem 0.5rem;
+        }
+
+        .company {
+          font-size: 1rem;
+        }
+
+        .nav_btn {
+          padding: 0.35rem 0.6rem;
+          font-size: 0.7rem;
+        }
+
+        .form-wrapper {
+          padding: 0 0.5rem;
+        }
+
+        .form-container {
+          padding: 25px 15px;
+          margin-bottom: 20px;
+        }
+
+        .contact-icon {
+          width: 50px;
+          height: 50px;
+          font-size: 1.25rem;
+        }
+
+        h1 {
+          font-size: 1.4rem;
+        }
+
+        .form-group {
+          margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+          font-size: 0.85rem;
+        }
+
+        button[type="submit"] {
+          padding: 14px 28px;
+          font-size: 0.95rem;
+        }
+      }
+
+      @media (max-width: 320px) {
+        .company {
+          font-size: 0.9rem;
+        }
+
+        .nav {
+          gap: 0.35rem;
+        }
+
+        .nav_btn {
+          padding: 0.3rem 0.5rem;
+          font-size: 0.65rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- Header - FULL WIDTH, outside any container -->
+    <header class="header" id="header">
+      <div class="header-container">
+        <a href="index.html" class="company">
+          <i class="fas fa-truck-moving"></i>
+          Pro Fleet <span>Recruiting</span>
+        </a>
+        
+        <nav class="nav">
+          <a href="index.html" class="nav_btn">Home</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content - SEPARATE from header -->
+    <main class="main-content">
+      <div class="form-wrapper">
+        <div class="form-container">
+          <div class="contact-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          
+          <h1>Contact <span>Us</span></h1>
+          <p>Have questions? We're here to help. Send us a message and we'll respond as soon as possible.</p>
+
+          <form action="https://formspree.io/f/mpqowalr" method="POST">
+            
+            <div class="form-group">
+              <label for="full_name"><i class="fas fa-user"></i>Full Name</label>
+              <input type="text" id="full_name" name="full_name" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="phone"><i class="fas fa-phone"></i>Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+            </div>
+
+            <div class="form-group">
+              <label for="email"><i class="fas fa-envelope"></i>Email Address</label>
+              <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+            </div>
+
+            <div class="form-group">
+              <label for="message"><i class="fas fa-comment-alt"></i>Message</label>
+              <textarea id="message" name="message" placeholder="How can we help you?" required></textarea>
+            </div>
+
+            <input type="hidden" name="_subject" value="New Contact Form Submission">
+            <input type="hidden" name="_next" value="https://profleetrecruiting.com/thank-you.html">
+
+            <button type="submit">Send Message</button>
+          </form>
+
+          <div class="contact-info">
+            <div class="info-item">
+              <i class="fas fa-clock"></i>
+              <span>24/7 Support</span>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-headset"></i>
+              <span>Fast Response</span>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-shield-alt"></i>
+              <span>Secure & Private</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer - FULL WIDTH -->
+    <footer class="site-footer">
+      <p>&copy; 2026 Pro Fleet Recruiting. All rights reserved.</p>
+    </footer>
+
+    <!-- Header Scroll Effect -->
+    <script>
+      let lastScrollY = window.scrollY;
+      const header = document.getElementById('header');
+
+      window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+
+        // Add scrolled class for background change
+        if (currentScrollY > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+
+        // Fade out when scrolling down, fade in when scrolling up
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+          header.classList.add('fade-out');
+        } else {
+          header.classList.remove('fade-out');
+        }
+        lastScrollY = currentScrollY;
+      });
+    </script>
+  </body>
+</html>

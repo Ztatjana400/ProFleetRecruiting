@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Driver Application Form - Pro Fleet Recruiting</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <style>
+      :root {
+        --primary: #FF6B00;
+        --primary-dark: #E55A00;
+        --secondary: #1A1A2E;
+        --dark: #0F0F1A;
+        --light: #F5F5F5;
+        --gray: #8B8B9A;
+        --glass: rgba(255, 255, 255, 0.05);
+        --input-bg: rgba(255, 255, 255, 0.08);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: 'Roboto', 'Inter', sans-serif;
+        font-weight: 300;
+        background-color: var(--dark);
+        color: var(--light);
+        line-height: 1.7;
+        overflow-x: hidden;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      h1, h2, h3, h4 {
+        font-family: 'Oswald', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      /* Header & Navigation */
+      .header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        background: rgba(15, 15, 26, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 107, 0, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      .header.scrolled {
+        background: rgba(15, 15, 26, 0.98);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+      }
+
+      .header.fade-out {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .header-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .company {
+        font-family: 'Oswald', sans-serif;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--light);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .company span {
+        color: var(--primary);
+      }
+
+      .company i {
+        color: var(--primary);
+        font-size: 1.5rem;
+      }
+
+      .nav {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+      }
+
+      .nav_btn {
+        background: var(--primary);
+        color: white;
+        padding: 0.6rem 1.2rem;
+        border-radius: 4px;
+        font-family: 'Oswald', sans-serif;
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .nav_btn::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -75%;
+        width: 50%;
+        height: 200%;
+        background: linear-gradient(
+          120deg,
+          rgba(255,255,255,0) 0%,
+          rgba(255,255,255,0.4) 50%,
+          rgba(255,255,255,0) 100%
+        );
+        transform: rotate(25deg);
+        animation: shine 3s linear infinite;
+        z-index: 0;
+      }
+
+      @keyframes shine {
+        0% {
+          transform: translateX(-100%) rotate(25deg);
+        }
+        100% {
+          transform: translateX(300%) rotate(25deg);
+        }
+      }
+
+      .nav_btn:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: 0 6px 20px rgba(255, 107, 0, 0.4);
+      }
+
+      /* Main Container */
+      .section {
+        flex: 1;
+        padding-top: 100px;
+      }
+
+      .form-container {
+        max-width: 800px;
+        margin: 0 auto 60px;
+        background: var(--glass);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+      }
+
+      .form-container:hover {
+        border-color: rgba(255, 107, 0, 0.3);
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 0.5rem;
+        color: white;
+      }
+
+      h1 span {
+        color: var(--primary);
+      }
+
+      .form-container > p {
+        text-align: center;
+        margin-bottom: 2rem;
+        color: var(--gray);
+        font-size: 1.1rem;
+      }
+
+      h2 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: var(--primary);
+        margin-top: 2.5rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 2px solid rgba(255, 107, 0, 0.3);
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      h2::before {
+        content: '';
+        width: 4px;
+        height: 24px;
+        background: var(--primary);
+        border-radius: 2px;
+      }
+
+      /* Form Inputs */
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      input[type="file"],
+      select,
+      textarea {
+        width: 100%;
+        padding: 14px 16px;
+        margin-bottom: 1rem;
+        background: var(--input-bg);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 8px;
+        color: var(--light);
+        font-family: 'Roboto', sans-serif;
+        font-size: 1rem;
+        font-weight: 300;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+      }
+
+      input[type="text"]:focus,
+      input[type="email"]:focus,
+      input[type="tel"]:focus,
+      select:focus,
+      textarea:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.2);
+        background: rgba(255, 255, 255, 0.12);
+      }
+
+      input::placeholder {
+        color: var(--gray);
+      }
+
+      /* File Inputs */
+      input[type="file"] {
+        padding: 10px;
+        cursor: pointer;
+      }
+
+      input[type="file"]::file-selector-button {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        font-family: 'Oswald', sans-serif;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-right: 1rem;
+      }
+
+      input[type="file"]::file-selector-button:hover {
+        background: var(--primary-dark);
+      }
+
+      /* Labels */
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--light);
+        font-weight: 400;
+        font-size: 0.95rem;
+      }
+
+      /* Select Dropdowns */
+      select {
+        cursor: pointer;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23FF6B00' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 16px center;
+        padding-right: 40px;
+      }
+
+      select option {
+        background: var(--secondary);
+        color: var(--light);
+      }
+
+      /* Radio Groups */
+      .radio-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        margin: 1rem 0;
+      }
+
+      .radio-group label {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        cursor: pointer;
+        padding: 0.75rem;
+        background: var(--input-bg);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        margin-bottom: 0;
+      }
+
+      .radio-group label:hover {
+        border-color: var(--primary);
+        background: rgba(255, 107, 0, 0.1);
+      }
+
+      .radio-group input[type="radio"] {
+        width: 20px;
+        height: 20px;
+        accent-color: var(--primary);
+        cursor: pointer;
+      }
+
+      /* States Fieldset */
+      .states-fieldset {
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        background: var(--input-bg);
+      }
+
+      .states-fieldset legend {
+        font-family: 'Oswald', sans-serif;
+        font-size: 1rem;
+        color: var(--primary);
+        padding: 0 1rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .states-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 0.75rem 1.5rem;
+      }
+
+      .states-grid label {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 4px;
+        transition: all 0.2s ease;
+        margin-bottom: 0;
+        font-size: 0.9rem;
+        color: var(--gray);
+      }
+
+      .states-grid label:hover {
+        background: rgba(255, 107, 0, 0.1);
+        color: var(--light);
+      }
+
+      .states-grid input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        accent-color: var(--primary);
+        cursor: pointer;
+      }
+
+      /* Submit Button */
+      button[type="submit"] {
+        font-family: 'Oswald', sans-serif;
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 16px 48px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(255, 107, 0, 0.3);
+        display: block;
+        margin: 2rem auto 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      button[type="submit"]::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -75%;
+        width: 50%;
+        height: 200%;
+        background: linear-gradient(
+          120deg,
+          rgba(255,255,255,0) 0%,
+          rgba(255,255,255,0.4) 50%,
+          rgba(255,255,255,0) 100%
+        );
+        transform: rotate(25deg);
+        animation: shine 3s linear infinite;
+      }
+
+      button[type="submit"]:hover {
+        background: var(--primary-dark);
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(255, 107, 0, 0.4);
+      }
+
+      button[type="submit"]:active {
+        transform: translateY(-1px);
+      }
+
+      /* Footer */
+      .site-footer {
+        background: #0a0a12;
+        padding: 2rem;
+        border-top: 1px solid rgba(255, 107, 0, 0.2);
+        text-align: center;
+        margin-top: auto;
+      }
+
+      .site-footer p {
+        color: var(--gray);
+        font-size: 0.9rem;
+        margin: 0;
+      }
+
+      /* Mobile Optimizations */
+      @media (max-width: 968px) {
+        .header-container {
+          padding: 0.8rem 1rem;
+        }
+
+        .company {
+          font-size: 1.4rem;
+        }
+
+        .company i {
+          font-size: 1.2rem;
+        }
+
+        .nav {
+          gap: 1rem;
+        }
+
+        .nav_btn {
+          padding: 0.5rem 1rem;
+          font-size: 0.8rem;
+        }
+
+        .section {
+          padding-top: 80px;
+        }
+
+        .form-container {
+          margin: 0 1rem 40px;
+          padding: 30px;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        h2 {
+          font-size: 1.1rem;
+        }
+
+        .states-grid {
+          grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+          gap: 0.5rem 1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .header-container {
+          padding: 0.6rem 0.75rem;
+        }
+
+        .company {
+          font-size: 1.1rem;
+        }
+
+        .company i {
+          font-size: 1rem;
+        }
+
+        .nav {
+          gap: 0.5rem;
+        }
+
+        .nav_btn {
+          padding: 0.4rem 0.8rem;
+          font-size: 0.75rem;
+        }
+
+        .section {
+          padding-top: 70px;
+        }
+
+        .form-container {
+          margin: 0 0.75rem 30px;
+          padding: 20px;
+          border-radius: 8px;
+        }
+
+        h1 {
+          font-size: 1.5rem;
+        }
+
+        .form-container > p {
+          font-size: 0.95rem;
+        }
+
+        h2 {
+          font-size: 1rem;
+          margin-top: 2rem;
+        }
+
+        h2::before {
+          height: 20px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="file"],
+        select,
+        textarea {
+          padding: 12px 14px;
+          font-size: 0.95rem;
+        }
+
+        .radio-group label {
+          padding: 0.6rem;
+        }
+
+        .states-fieldset {
+          padding: 1rem;
+        }
+
+        .states-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 0.5rem;
+        }
+
+        .states-grid label {
+          font-size: 0.85rem;
+          padding: 0.4rem;
+        }
+
+        button[type="submit"] {
+          padding: 14px 36px;
+          font-size: 1rem;
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 360px) {
+        .header-container {
+          padding: 0.5rem 0.5rem;
+        }
+
+        .company {
+          font-size: 1rem;
+        }
+
+        .nav_btn {
+          padding: 0.35rem 0.6rem;
+          font-size: 0.7rem;
+        }
+
+        .form-container {
+          margin: 0 0.5rem 20px;
+          padding: 15px;
+        }
+
+        h1 {
+          font-size: 1.35rem;
+        }
+
+        .states-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="section section1">
+      <div class="container">
+
+        <header class="header" id="header">
+          <div class="header-container">
+            <a href="index.html" class="company">
+              <i class="fas fa-truck-moving"></i>
+              Pro Fleet <span>Recruiting</span>
+            </a>
+            
+            <nav class="nav">
+              <a href="index.html" class="nav_btn">Home</a>
+            </nav>
+          </div>
+        </header>
+
+        <div class="form-container">
+          <h1>Driver <span>Application</span></h1>
+          <p>Please fill out all fields and upload the required documents.</p>
+
+          <form action="https://getform.io/f/azyqgwzb" method="POST" enctype="multipart/form-data">
+
+            <!-- Personal Info -->
+            <h2>Personal Information</h2>
+            <input type="text" name="full_name" placeholder="Full Name" required>
+            <input type="tel" name="phone" placeholder="Phone Number" required>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <input type="text" name="city_state" placeholder="City and State of Residence" required>
+
+            <!-- Driving Experience -->
+            <h2>Driving Experience</h2>
+            <input type="text" name="driving_experience" placeholder="Years of Experience" required>
+
+            <!-- File Uploads -->
+            <h2>Documents</h2>
+            <label>Upload CDL (front)</label>
+            <input type="file" name="cdl-front" accept=".pdf,.doc,.docx,.jpg,.png" required>
+
+            <label>Upload CDL (back)</label>
+            <input type="file" name="cdl-back" accept=".pdf,.doc,.docx,.jpg,.png" required>
+
+            <label>Upload Previous CDL (if applicable)</label>
+            <input type="file" name="previous_cdl" accept=".pdf,.doc,.docx,.jpg,.png">
+
+            <label>Upload Current Medical Card</label>
+            <input type="file" name="medical_card" accept=".pdf,.doc,.docx,.jpg,.png" required>
+
+            <!-- Banking Info -->
+            <h2>Banking Information</h2>
+            <label>Do you have a business checking account?</label>
+            <select name="business_account" required>
+              <option value="">Select</option>
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+
+            <!-- Work Preferences -->
+            <h2>Work Preferences</h2>
+            
+            <label>1. How long do you prefer to stay on the road?</label>
+            <div class="radio-group">
+              <label><input type="radio" name="road_time" value="2 weeks - 2 days off"> 2 weeks - 2 days off</label>
+              <label><input type="radio" name="road_time" value="3 weeks - 3 days off"> 3 weeks - 3 days off</label>
+              <label><input type="radio" name="road_time" value="4 weeks - 4 days off"> 4 weeks - 4 days off</label>
+              <label><input type="radio" name="road_time" value="5 weeks - 5 days off"> 5 weeks - 5 days off</label>
+              <label><input type="radio" name="road_time" value="6 weeks - 6 days off"> 6 weeks - 6 days off</label>
+            </div>
+
+            <label>2. Are you comfortable flying?</label>
+            <select name="comfortable_flying">
+              <option value="">Select</option>
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+
+            <label>3. Do you have a pet that travels with you?</label>
+            <select name="pet_travels">
+              <option value="">Select</option>
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+
+            <fieldset class="states-fieldset">
+              <legend>4. Do you have any states you prefer not to drive in?</legend>
+              <div class="states-grid">
+                <label><input type="checkbox" name="avoid_states[]" value="Alabama"> Alabama</label>
+                <label><input type="checkbox" name="avoid_states[]" value="Alaska"> Alaska</label>
+                <label><input type="checkbox" name="avoid_states[]" value="Arizona"> Arizona</label>
+                <label><input type="checkbox" name="avoid_states[]" value="Arkansas"> Arkansas</label>
+                <label><input type="checkbox" name="avoid_states[]" value="California"> California</label>
+                <label><input type="checkbox" name="avoid_states[]" value="Colorado"> Colorado</label>
+                <label><input type="checkbox" name="avoid_states[]" value="Connecticut"> Connecticut</label>
+                <label><input type="checkbox" name="avoid_states[]" value="Delaware"> Delaware</label>
+                <label><input type="checkbox" name="avoid_states[]" value="Florida"> Florida</label>
+                <label><input type="checkbox" name="avoid_states[]" value="Georgia"> Georgia</label>
+                <label><input type="checkbox" name="avoid_states[]" value="Hawaii"> Hawaii</label>
+                <label><input type="checkbox" name="avoid_states[]" value="Idaho"> Idaho</label>
+                <label><input type="checkbox" name="avoid_states[]" value="Illinois"> Illinois</label>
+                <label><input type="checkbox" name="avoid_states[]" value="Indiana"> Indiana</label>
+                <label><input type="checkbox" name="avoid_states[]" value="Iowa"> Iowa</label>
+                <label><input type="checkbox" name="avoid_states[]" value="Kansas"> Kansas</label>
+                <label><input type="checkbox" name="avoid_states[]" value="Kentucky"> Kentucky</label>
+                <label><input type="checkbox" name="avoid_states[]" value="Louisiana"> Louisiana</label>
+                <label><input type="checkbox" name="avoid_states[]" value="Maine"> Maine</label>
+                <label><input type="checkbox" name="avoid_states[]" value="Maryland"> Maryland</label>
+                <label><input type="checkbox" name="avoid_states[]" value="Massachusetts"> Massachusetts</label>
+                <label><input type="checkbox" name="avoid_states[]" value="Michigan"> Michigan</label>
+                <label><input type="checkbox" name="avoid_states[]" value="Minnesota"> Minnesota</label>
+                <label><input type="checkbox" name="avoid_states[]" value="Mississippi"> Mississippi</label>
+                <label><input type="checkbox" name="avoid_states[]" value="Missouri"> Missouri</label>
+                <label><input type="checkbox" name="avoid_states[]" value="Montana"> Montana</label>
+                <label><input type="checkbox" name="avoid_states[]" value="Nebraska"> Nebraska</label>
+                <label><input type="checkbox" name="avoid_states[]" value="Nevada"> Nevada</label>
+                <label><input type="checkbox" name="avoid_states[]" value="New Hampshire"> New Hampshire</label>
+                <label><input type="checkbox" name="avoid_states[]" value="New Jersey"> New Jersey</label>
+                <label><input type="checkbox" name="avoid_states[]" value="New Mexico"> New Mexico</label>
+                <label><input type="checkbox" name="avoid_states[]" value="New York"> New York</label>
+                <label><input type="checkbox" name="avoid_states[]" value="North Carolina"> North Carolina</label>
+                <label><input type="checkbox" name="avoid_states[]" value="North Dakota"> North Dakota</label>
+                <label><input type="checkbox" name="avoid_states[]" value="Ohio"> Ohio</label>
+                <label><input type="checkbox" name="avoid_states[]" value="Oklahoma"> Oklahoma</label>
+                <label><input type="checkbox" name="avoid_states[]" value="Oregon"> Oregon</label>
+                <label><input type="checkbox" name="avoid_states[]" value="Pennsylvania"> Pennsylvania</label>
+                <label><input type="checkbox" name="avoid_states[]" value="Rhode Island"> Rhode Island</label>
+                <label><input type="checkbox" name="avoid_states[]" value="South Carolina"> South Carolina</label>
+                <label><input type="checkbox" name="avoid_states[]" value="South Dakota"> South Dakota</label>
+                <label><input type="checkbox" name="avoid_states[]" value="Tennessee"> Tennessee</label>
+                <label><input type="checkbox" name="avoid_states[]" value="Texas"> Texas</label>
+                <label><input type="checkbox" name="avoid_states[]" value="Utah"> Utah</label>
+                <label><input type="checkbox" name="avoid_states[]" value="Vermont"> Vermont</label>
+                <label><input type="checkbox" name="avoid_states[]" value="Virginia"> Virginia</label>
+                <label><input type="checkbox" name="avoid_states[]" value="Washington"> Washington</label>
+                <label><input type="checkbox" name="avoid_states[]" value="West Virginia"> West Virginia</label>
+                <label><input type="checkbox" name="avoid_states[]" value="Wisconsin"> Wisconsin</label>
+                <label><input type="checkbox" name="avoid_states[]" value="Wyoming"> Wyoming</label>
+              </div>
+            </fieldset>
+
+            <label>5. List full name of your last three carriers you drove for:</label>
+            <input type="text" name="last_three_carriers" placeholder="Carrier 1, Carrier 2, Carrier 3">
+
+            <label>6. Do you have experience with electronic logbooks (HOS)?</label>
+            <select name="hos_experience" required>
+              <option value="">Select</option>
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+
+            <label>7. Do you know how to complete a proper pre-trip inspection?</label>
+            <select name="pre_trip" required>
+              <option value="">Select</option>
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+     
+            <input type="hidden" name="_subject" value="New Driver Application">
+
+            <button type="submit">Submit Application</button>
+          </form>
+        </div>
+
+        <footer class="site-footer">
+          <p>&copy; 2026 Pro Fleet Recruiting. All rights reserved.</p>
+        </footer>
+
+      </div>
+    </div>
+
+    <!-- Header Scroll Effect -->
+    <script>
+      let lastScrollY = window.scrollY;
+      const header = document.getElementById('header');
+
+      window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+
+        // Add scrolled class for background change
+        if (currentScrollY > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+
+        // Fade out when scrolling down, fade in when scrolling up
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+          header.classList.add('fade-out');
+        } else {
+          header.classList.remove('fade-out');
+        }
+        lastScrollY = currentScrollY;
+      });
+    </script>
+  </body>
+</html>
