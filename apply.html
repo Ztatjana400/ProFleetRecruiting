@@ -430,20 +430,34 @@
         transform: translateY(-1px);
       }
 
-      /* Footer */
+       /* Footer */
       .site-footer {
-        background: #0a0a12;
-        padding: 2rem;
-        border-top: 1px solid rgba(255, 107, 0, 0.2);
-        text-align: center;
-        margin-top: auto;
-      }
+  background: #0a0a12;
+  padding: 2rem;
+  border-top: 1px solid rgba(255, 107, 0, 0.2);
+  text-align: center;
+  width: 100%;
+}
 
-      .site-footer p {
-        color: var(--gray);
-        font-size: 0.9rem;
-        margin: 0;
-      }
+.site-footer p {
+  color: var(--gray);
+  font-size: 0.9rem;
+  margin: 0.3rem 0;
+}
+
+.footer-links a {
+  color: var(--primary);
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
 
       /* Mobile Optimizations */
       @media (max-width: 968px) {
@@ -766,10 +780,14 @@
           </form>
         </div>
 
-        <footer class="site-footer">
-          <p>&copy; 2026 Pro Fleet Recruiting. All rights reserved.</p>
-        </footer>
+           <!-- Footer - FULL WIDTH -->
+<footer class="site-footer">
+  <p>&copy; 2026 Pro Fleet Recruiting. All rights reserved.</p>
 
+  <p class="footer-links">
+    <a href="privacypolicy.html">Privacy Policy</a>
+  </p>
+</footer>
       </div>
     </div>
 
