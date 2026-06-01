@@ -840,14 +840,17 @@ section {
   color: #FFD700;
   margin-bottom: 1rem;
 }
-
 /* Footer */
 .site-footer {
   background: #0a0a12;
   padding: 4rem 2rem 2rem;
   border-top: 1px solid rgba(255, 107, 0, 0.2);
+  text-align: center;
+  margin-top: auto;
+  width: 100%;
 }
 
+/* TOP GRID */
 .footer-content {
   max-width: 1400px;
   margin: 0 auto;
@@ -863,7 +866,8 @@ section {
   color: white;
 }
 
-.footer-section p, .footer-section a {
+.footer-section p,
+.footer-section a {
   color: var(--gray);
   text-decoration: none;
   line-height: 2;
@@ -874,21 +878,11 @@ section {
   color: var(--primary);
 }
 
-.footer-bottom {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
+/* SOCIAL ICONS */
 .social-icons {
   display: flex;
   gap: 1rem;
+  justify-content: center;
 }
 
 .social-icons a {
@@ -911,19 +905,32 @@ section {
   border-color: var(--primary);
 }
 
-.footer-links {
+/* BOTTOM BAR (CENTERED FIX) */
+.footer-bottom {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+
   display: flex;
-  gap: 2rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
 }
 
+/* YOUR PREFERRED STYLE FOR LINK */
 .footer-links a {
-  color: var(--gray);
+  color: var(--primary);
   text-decoration: none;
-  transition: color 0.3s ease;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: 0.3s ease;
 }
 
 .footer-links a:hover {
-  color: var(--primary);
+  color: var(--primary-dark);
+  text-decoration: underline;
 }
 
 /* Animations */
@@ -937,7 +944,6 @@ section {
   opacity: 1;
   transform: translateY(0);
 }
-
 /* ============================================
    MOBILE BREAKPOINT (max-width: 968px)
    ============================================ */
@@ -1804,7 +1810,6 @@ section {
     font-size: 0.9rem;
   }
 
-  /* Fix Services Grid Centering */
   /* Fix Services Grid Centering */
 .services-grid {
   display: grid;
