@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-    <style>
+     <style>
       :root {
         --primary: #FF6B00;
         --primary-dark: #E55A00;
@@ -221,6 +221,7 @@
       input[type="email"],
       input[type="tel"],
       input[type="file"],
+      input[type="number"],
       select,
       textarea {
         width: 100%;
@@ -240,6 +241,7 @@
       input[type="text"]:focus,
       input[type="email"]:focus,
       input[type="tel"]:focus,
+      input[type="number"]:focus,
       select:focus,
       textarea:focus {
         outline: none;
@@ -430,34 +432,72 @@
         transform: translateY(-1px);
       }
 
-       /* Footer */
+      /* Conditional Sections */
+      .conditional-section {
+        display: none;
+        opacity: 0;
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        transform: translateY(-10px);
+      }
+
+      .conditional-section.visible {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Divider */
+      .section-divider {
+        height: 1px;
+        background: rgba(255, 107, 0, 0.2);
+        margin: 2rem 0;
+        border: none;
+      }
+
+      /* Info Box */
+      .info-box {
+        background: rgba(255, 107, 0, 0.08);
+        border: 1px solid rgba(255, 107, 0, 0.2);
+        border-radius: 8px;
+        padding: 1rem 1.25rem;
+        margin-bottom: 1.5rem;
+        font-size: 0.9rem;
+        color: var(--gray);
+      }
+
+      .info-box i {
+        color: var(--primary);
+        margin-right: 0.5rem;
+      }
+
+      /* Footer */
       .site-footer {
-  background: #0a0a12;
-  padding: 2rem;
-  border-top: 1px solid rgba(255, 107, 0, 0.2);
-  text-align: center;
-  width: 100%;
-}
+        background: #0a0a12;
+        padding: 2rem;
+        border-top: 1px solid rgba(255, 107, 0, 0.2);
+        text-align: center;
+        width: 100%;
+      }
 
-.site-footer p {
-  color: var(--gray);
-  font-size: 0.9rem;
-  margin: 0.3rem 0;
-}
+      .site-footer p {
+        color: var(--gray);
+        font-size: 0.9rem;
+        margin: 0.3rem 0;
+      }
 
-.footer-links a {
-  color: var(--primary);
-  text-decoration: none;
-  font-size: 0.85rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  transition: 0.3s ease;
-}
+      .footer-links a {
+        color: var(--primary);
+        text-decoration: none;
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        transition: 0.3s ease;
+      }
 
-.footer-links a:hover {
-  color: var(--primary-dark);
-  text-decoration: underline;
-}
+      .footer-links a:hover {
+        color: var(--primary-dark);
+        text-decoration: underline;
+      }
 
       /* Mobile Optimizations */
       @media (max-width: 968px) {
@@ -557,6 +597,7 @@
         input[type="text"],
         input[type="email"],
         input[type="tel"],
+        input[type="number"],
         input[type="file"],
         select,
         textarea {
@@ -617,7 +658,8 @@
         }
       }
     </style>
-  </head>
+  <base target="_blank">
+</head>
   <body>
     <div class="section section1">
       <div class="container">
@@ -628,7 +670,7 @@
               <i class="fas fa-truck-moving"></i>
               Pro Fleet <span>Recruiting</span>
             </a>
-            
+
             <nav class="nav">
               <a href="index.html" class="nav_btn">Home</a>
             </nav>
@@ -641,153 +683,239 @@
 
           <form action="https://getform.io/f/azyqgwzb" method="POST" enctype="multipart/form-data">
 
-            <!-- Personal Info -->
+            <!-- Position Selection -->
+            <div class="form-group">
+              <label for="position">
+                <i class="fas fa-briefcase"></i>
+                Position Applying For
+              </label>
+              <select id="position" name="position" required>
+                <option value="">Select Position</option>
+                <option value="CDL Driver">CDL Driver</option>
+                <option value="Owner Operator">Owner Operator</option>
+              </select>
+            </div>
+
+            <!-- Common Fields (Always Visible) -->
             <h2>Personal Information</h2>
             <input type="text" name="full_name" placeholder="Full Name" required>
             <input type="tel" name="phone" placeholder="Phone Number" required>
             <input type="email" name="email" placeholder="Email Address" required>
             <input type="text" name="city_state" placeholder="City and State of Residence" required>
 
-            <!-- Driving Experience -->
             <h2>Driving Experience</h2>
             <input type="text" name="driving_experience" placeholder="Years of Experience" required>
 
-            <!-- File Uploads -->
-            <h2>Documents</h2>
-            <label>Upload CDL (front)</label>
-            <input type="file" name="cdl-front" accept=".pdf,.doc,.docx,.jpg,.png" required>
+            <!-- ============================ -->
+            <!-- CDL DRIVER SPECIFIC SECTION  -->
+            <!-- ============================ -->
+            <div id="cdl-section" class="conditional-section">
+              <hr class="section-divider">
+              <div class="info-box">
+                <i class="fas fa-id-card"></i>
+                <strong>CDL Driver Application</strong> - Please provide the following information and documents.
+              </div>
 
-            <label>Upload CDL (back)</label>
-            <input type="file" name="cdl-back" accept=".pdf,.doc,.docx,.jpg,.png" required>
+              <h2>CDL Documents</h2>
+              <label>Upload CDL (front)</label>
+              <input type="file" name="cdl-front" accept=".pdf,.doc,.docx,.jpg,.png">
 
-            <label>Upload Previous CDL (if applicable)</label>
-            <input type="file" name="previous_cdl" accept=".pdf,.doc,.docx,.jpg,.png">
+              <label>Upload CDL (back)</label>
+              <input type="file" name="cdl-back" accept=".pdf,.doc,.docx,.jpg,.png">
 
-            <label>Upload Current Medical Card</label>
-            <input type="file" name="medical_card" accept=".pdf,.doc,.docx,.jpg,.png" required>
+              <label>Upload Previous CDL (if applicable)</label>
+              <input type="file" name="previous_cdl" accept=".pdf,.doc,.docx,.jpg,.png">
 
-            <!-- Banking Info -->
-            <h2>Banking Information</h2>
-            <label>Do you have a business checking account?</label>
-            <select name="business_account" required>
-              <option value="">Select</option>
-              <option>Yes</option>
-              <option>No</option>
-            </select>
+              <label>Upload Current Medical Card</label>
+              <input type="file" name="medical_card" accept=".pdf,.doc,.docx,.jpg,.png">
 
-            <!-- Work Preferences -->
-            <h2>Work Preferences</h2>
-            
-            <label>1. How long do you prefer to stay on the road?</label>
-            <div class="radio-group">
-              <label><input type="radio" name="road_time" value="2 weeks - 2 days off"> 2 weeks - 2 days off</label>
-              <label><input type="radio" name="road_time" value="3 weeks - 3 days off"> 3 weeks - 3 days off</label>
-              <label><input type="radio" name="road_time" value="4 weeks - 4 days off"> 4 weeks - 4 days off</label>
-              <label><input type="radio" name="road_time" value="5 weeks - 5 days off"> 5 weeks - 5 days off</label>
-              <label><input type="radio" name="road_time" value="6 weeks - 6 days off"> 6 weeks - 6 days off</label>
+              <h2>Banking Information</h2>
+              <label>Do you have a business checking account?</label>
+              <select name="business_account">
+                <option value="">Select</option>
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+
+              <h2>Work Preferences</h2>
+
+              <label>1. How long do you prefer to stay on the road?</label>
+              <div class="radio-group">
+                <label><input type="radio" name="road_time" value="2 weeks - 2 days off"> 2 weeks - 2 days off</label>
+                <label><input type="radio" name="road_time" value="3 weeks - 3 days off"> 3 weeks - 3 days off</label>
+                <label><input type="radio" name="road_time" value="4 weeks - 4 days off"> 4 weeks - 4 days off</label>
+                <label><input type="radio" name="road_time" value="5 weeks - 5 days off"> 5 weeks - 5 days off</label>
+                <label><input type="radio" name="road_time" value="6 weeks - 6 days off"> 6 weeks - 6 days off</label>
+              </div>
+
+              <label>2. Are you comfortable flying?</label>
+              <select name="comfortable_flying">
+                <option value="">Select</option>
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+
+              <label>3. Do you have a pet that travels with you?</label>
+              <select name="pet_travels">
+                <option value="">Select</option>
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+
+              <label>4. Do you have any states you prefer not to drive in?</label>
+              <fieldset class="states-fieldset">
+                <div class="states-grid">
+                  <label><input type="checkbox" name="avoid_states[]" value="Alabama"> Alabama</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="Arizona"> Arizona</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="Arkansas"> Arkansas</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="California"> California</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="Colorado"> Colorado</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="Connecticut"> Connecticut</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="Delaware"> Delaware</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="Florida"> Florida</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="Georgia"> Georgia</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="Idaho"> Idaho</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="Illinois"> Illinois</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="Indiana"> Indiana</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="Iowa"> Iowa</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="Kansas"> Kansas</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="Kentucky"> Kentucky</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="Louisiana"> Louisiana</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="Maine"> Maine</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="Maryland"> Maryland</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="Massachusetts"> Massachusetts</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="Michigan"> Michigan</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="Minnesota"> Minnesota</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="Mississippi"> Mississippi</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="Missouri"> Missouri</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="Montana"> Montana</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="Nebraska"> Nebraska</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="Nevada"> Nevada</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="New Hampshire"> New Hampshire</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="New Jersey"> New Jersey</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="New Mexico"> New Mexico</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="New York"> New York</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="North Carolina"> North Carolina</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="North Dakota"> North Dakota</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="Ohio"> Ohio</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="Oklahoma"> Oklahoma</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="Oregon"> Oregon</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="Pennsylvania"> Pennsylvania</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="Rhode Island"> Rhode Island</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="South Carolina"> South Carolina</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="South Dakota"> South Dakota</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="Tennessee"> Tennessee</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="Texas"> Texas</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="Utah"> Utah</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="Vermont"> Vermont</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="Virginia"> Virginia</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="Washington"> Washington</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="West Virginia"> West Virginia</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="Wisconsin"> Wisconsin</label>
+                  <label><input type="checkbox" name="avoid_states[]" value="Wyoming"> Wyoming</label>
+                </div>
+              </fieldset>
+
+              <label>5. List full name of your last three carriers you drove for:</label>
+              <input type="text" name="last_three_carriers" placeholder="Carrier 1, Carrier 2, Carrier 3">
+
+              <label>6. Do you have experience with electronic logbooks (HOS)?</label>
+              <select name="hos_experience">
+                <option value="">Select</option>
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+
+              <label>7. Do you know how to complete a proper pre-trip inspection?</label>
+              <select name="pre_trip">
+                <option value="">Select</option>
+                <option>Yes</option>
+                <option>No</option>
+              </select>
             </div>
 
-            <label>2. Are you comfortable flying?</label>
-            <select name="comfortable_flying">
-              <option value="">Select</option>
-              <option>Yes</option>
-              <option>No</option>
-            </select>
-
-            <label>3. Do you have a pet that travels with you?</label>
-            <select name="pet_travels">
-              <option value="">Select</option>
-              <option>Yes</option>
-              <option>No</option>
-            </select>
-
-            <label>4. Do you have any states you prefer not to drive in?</label>
-            <fieldset class="states-fieldset">
-              <div class="states-grid">
-                <label><input type="checkbox" name="avoid_states[]" value="Alabama"> Alabama</label>
-                <!-- <label><input type="checkbox" name="avoid_states[]" value="Alaska"> Alaska</label> -->
-                <label><input type="checkbox" name="avoid_states[]" value="Arizona"> Arizona</label>
-                <label><input type="checkbox" name="avoid_states[]" value="Arkansas"> Arkansas</label>
-                <label><input type="checkbox" name="avoid_states[]" value="California"> California</label>
-                <label><input type="checkbox" name="avoid_states[]" value="Colorado"> Colorado</label>
-                <label><input type="checkbox" name="avoid_states[]" value="Connecticut"> Connecticut</label>
-                <label><input type="checkbox" name="avoid_states[]" value="Delaware"> Delaware</label>
-                <label><input type="checkbox" name="avoid_states[]" value="Florida"> Florida</label>
-                <label><input type="checkbox" name="avoid_states[]" value="Georgia"> Georgia</label>
-                <!-- <label><input type="checkbox" name="avoid_states[]" value="Hawaii"> Hawaii</label> -->
-                <label><input type="checkbox" name="avoid_states[]" value="Idaho"> Idaho</label>
-                <label><input type="checkbox" name="avoid_states[]" value="Illinois"> Illinois</label>
-                <label><input type="checkbox" name="avoid_states[]" value="Indiana"> Indiana</label>
-                <label><input type="checkbox" name="avoid_states[]" value="Iowa"> Iowa</label>
-                <label><input type="checkbox" name="avoid_states[]" value="Kansas"> Kansas</label>
-                <label><input type="checkbox" name="avoid_states[]" value="Kentucky"> Kentucky</label>
-                <label><input type="checkbox" name="avoid_states[]" value="Louisiana"> Louisiana</label>
-                <label><input type="checkbox" name="avoid_states[]" value="Maine"> Maine</label>
-                <label><input type="checkbox" name="avoid_states[]" value="Maryland"> Maryland</label>
-                <label><input type="checkbox" name="avoid_states[]" value="Massachusetts"> Massachusetts</label>
-                <label><input type="checkbox" name="avoid_states[]" value="Michigan"> Michigan</label>
-                <label><input type="checkbox" name="avoid_states[]" value="Minnesota"> Minnesota</label>
-                <label><input type="checkbox" name="avoid_states[]" value="Mississippi"> Mississippi</label>
-                <label><input type="checkbox" name="avoid_states[]" value="Missouri"> Missouri</label>
-                <label><input type="checkbox" name="avoid_states[]" value="Montana"> Montana</label>
-                <label><input type="checkbox" name="avoid_states[]" value="Nebraska"> Nebraska</label>
-                <label><input type="checkbox" name="avoid_states[]" value="Nevada"> Nevada</label>
-                <label><input type="checkbox" name="avoid_states[]" value="New Hampshire"> New Hampshire</label>
-                <label><input type="checkbox" name="avoid_states[]" value="New Jersey"> New Jersey</label>
-                <label><input type="checkbox" name="avoid_states[]" value="New Mexico"> New Mexico</label>
-                <label><input type="checkbox" name="avoid_states[]" value="New York"> New York</label>
-                <label><input type="checkbox" name="avoid_states[]" value="North Carolina"> North Carolina</label>
-                <label><input type="checkbox" name="avoid_states[]" value="North Dakota"> North Dakota</label>
-                <label><input type="checkbox" name="avoid_states[]" value="Ohio"> Ohio</label>
-                <label><input type="checkbox" name="avoid_states[]" value="Oklahoma"> Oklahoma</label>
-                <label><input type="checkbox" name="avoid_states[]" value="Oregon"> Oregon</label>
-                <label><input type="checkbox" name="avoid_states[]" value="Pennsylvania"> Pennsylvania</label>
-                <label><input type="checkbox" name="avoid_states[]" value="Rhode Island"> Rhode Island</label>
-                <label><input type="checkbox" name="avoid_states[]" value="South Carolina"> South Carolina</label>
-                <label><input type="checkbox" name="avoid_states[]" value="South Dakota"> South Dakota</label>
-                <label><input type="checkbox" name="avoid_states[]" value="Tennessee"> Tennessee</label>
-                <label><input type="checkbox" name="avoid_states[]" value="Texas"> Texas</label>
-                <label><input type="checkbox" name="avoid_states[]" value="Utah"> Utah</label>
-                <label><input type="checkbox" name="avoid_states[]" value="Vermont"> Vermont</label>
-                <label><input type="checkbox" name="avoid_states[]" value="Virginia"> Virginia</label>
-                <label><input type="checkbox" name="avoid_states[]" value="Washington"> Washington</label>
-                <label><input type="checkbox" name="avoid_states[]" value="West Virginia"> West Virginia</label>
-                <label><input type="checkbox" name="avoid_states[]" value="Wisconsin"> Wisconsin</label>
-                <label><input type="checkbox" name="avoid_states[]" value="Wyoming"> Wyoming</label>
+            <!-- ================================= -->
+            <!-- OWNER OPERATOR SPECIFIC SECTION   -->
+            <!-- ================================= -->
+            <div id="owner-section" class="conditional-section">
+              <hr class="section-divider">
+              <div class="info-box">
+                <i class="fas fa-truck"></i>
+                <strong>Owner Operator Application</strong> - Please provide the following information and documents.
               </div>
-            </fieldset>
 
-            <label>5. List full name of your last three carriers you drove for:</label>
-            <input type="text" name="last_three_carriers" placeholder="Carrier 1, Carrier 2, Carrier 3">
+              <h2>Documents</h2>
+              <label>Upload CDL (front)</label>
+              <input type="file" name="cdl-front" accept=".pdf,.doc,.docx,.jpg,.png">
 
-            <label>6. Do you have experience with electronic logbooks (HOS)?</label>
-            <select name="hos_experience" required>
-              <option value="">Select</option>
-              <option>Yes</option>
-              <option>No</option>
-            </select>
+              <label>Upload CDL (back)</label>
+              <input type="file" name="cdl-back" accept=".pdf,.doc,.docx,.jpg,.png">
 
-            <label>7. Do you know how to complete a proper pre-trip inspection?</label>
-            <select name="pre_trip" required>
-              <option value="">Select</option>
-              <option>Yes</option>
-              <option>No</option>
-            </select>
-     
+              <label>Upload Previous CDL (if applicable)</label>
+              <input type="file" name="previous_cdl" accept=".pdf,.doc,.docx,.jpg,.png">
+
+              <label>Upload Current Medical Card</label>
+              <input type="file" name="medical_card" accept=".pdf,.doc,.docx,.jpg,.png">
+
+              <h2>Business Information</h2>
+              <input type="text" name="company_name" placeholder="Company / DBA Name">
+              <input type="text" name="dot_number" placeholder="DOT Number">
+              <input type="text" name="mc_number" placeholder="MC Number (if applicable)">
+
+              <h2>Equipment Information</h2>
+              <label>Truck Year</label>
+              <input type="number" name="truck_year" placeholder="e.g. 2020" min="1980" max="2030">
+              <input type="text" name="truck_make" placeholder="Truck Make (e.g. Freightliner)">
+              <input type="text" name="truck_model" placeholder="Truck Model">
+              <label>Trailer Type</label>
+              <select name="trailer_type">
+                <option value="">Select Trailer Type</option>
+                <option>Dry Van</option>
+                <option>Reefer</option>
+                <option>Flatbed</option>
+                <option>Other</option>
+              </select>
+
+
+              <h2>Rate & Availability</h2>
+              <label>Preferred Rate Per Mile ($)</label>
+              <input type="text" name="rate_per_mile" placeholder="e.g. 2.50">
+              <label>How many trucks do you operate?</label>
+              <select name="fleet_size">
+                <option value="">Select</option>
+                <option>1 (Solo)</option>
+                <option>2-5</option>
+                <option>6-10</option>
+                <option>11+</option>
+              </select>
+              <label>Are you available for dedicated lanes?</label>
+              <select name="dedicated_lanes">
+                <option value="">Select</option>
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+              <label>Preferred home time schedule</label>
+              <div class="radio-group">
+                <label><input type="radio" name="home_time" value="Weekly"> Weekly</label>
+                <label><input type="radio" name="home_time" value="Bi-weekly"> Bi-weekly</label>
+                <label><input type="radio" name="home_time" value="Monthly"> Monthly</label>
+                <label><input type="radio" name="home_time" value="Flexible"> Flexible / On-demand</label>
+              </div>
+            </div>
+
             <input type="hidden" name="_subject" value="New Driver Application">
 
             <button type="submit">Submit Application</button>
           </form>
         </div>
 
-           <!-- Footer - FULL WIDTH -->
-<footer class="site-footer">
-  <p>&copy; 2026 Pro Fleet Recruiting. All rights reserved.</p>
-
-  <p class="footer-links">
-    <a href="privacypolicy.html">Privacy Policy</a>
-  </p>
-</footer>
+        <!-- Footer - FULL WIDTH -->
+        <footer class="site-footer">
+          <p>&copy; 2026 Pro Fleet Recruiting. All rights reserved.</p>
+          <p class="footer-links">
+            <a href="privacypolicy.html">Privacy Policy</a>
+          </p>
+        </footer>
       </div>
     </div>
 
@@ -799,20 +927,70 @@
       window.addEventListener('scroll', () => {
         const currentScrollY = window.scrollY;
 
-        // Add scrolled class for background change
         if (currentScrollY > 50) {
           header.classList.add('scrolled');
         } else {
           header.classList.remove('scrolled');
         }
 
-        // Fade out when scrolling down, fade in when scrolling up
         if (currentScrollY > lastScrollY && currentScrollY > 100) {
           header.classList.add('fade-out');
         } else {
           header.classList.remove('fade-out');
         }
         lastScrollY = currentScrollY;
+      });
+
+      // =============================
+      // CONDITIONAL FORM LOGIC
+      // =============================
+      const positionSelect = document.getElementById('position');
+      const cdlSection = document.getElementById('cdl-section');
+      const ownerSection = document.getElementById('owner-section');
+
+      positionSelect.addEventListener('change', function() {
+        const value = this.value;
+
+        // Hide both sections first
+        cdlSection.classList.remove('visible');
+        ownerSection.classList.remove('visible');
+
+        // Small delay for smooth transition
+        setTimeout(() => {
+          if (value === 'CDL Driver') {
+            cdlSection.classList.add('visible');
+            // Make CDL file fields required when visible
+            cdlSection.querySelectorAll('input[type="file"]').forEach(input => {
+              if (input.name !== 'previous_cdl') {
+                input.setAttribute('required', '');
+              }
+            });
+            // Remove required from owner operator fields
+            ownerSection.querySelectorAll('input, select').forEach(input => {
+              input.removeAttribute('required');
+            });
+          } else if (value === 'Owner Operator') {
+            ownerSection.classList.add('visible');
+            // Make owner operator fields required
+            ownerSection.querySelectorAll('input, select').forEach(input => {
+              if (input.placeholder && !input.placeholder.includes('if applicable') && !input.placeholder.includes('MC')) {
+                input.setAttribute('required', '');
+              }
+            });
+            // Remove required from CDL fields
+            cdlSection.querySelectorAll('input, select').forEach(input => {
+              input.removeAttribute('required');
+            });
+          } else {
+            // No selection - remove all required from conditional fields
+            cdlSection.querySelectorAll('input, select').forEach(input => {
+              input.removeAttribute('required');
+            });
+            ownerSection.querySelectorAll('input, select').forEach(input => {
+              input.removeAttribute('required');
+            });
+          }
+        }, 50);
       });
     </script>
   </body>
