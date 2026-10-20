@@ -767,7 +767,7 @@
             <!-- Common Fields (Always Visible) -->
             <h2>Personal Information</h2>
             <input type="text" name="full_name" placeholder="Full Name" required>
-            <input type="tel" name="phone" placeholder="Phone Number">
+            <input type="tel" name="phone" placeholder="Phone Number" required>
 
 <div class="sms-consent">
   <label class="sms-consent-label">
@@ -1050,18 +1050,18 @@ function updateApplicationSections() {
     input.disabled = !isCDL;
     input.required = false;
 
-    if (isCDL && input.type === 'file') {
-      input.required = input.name !== 'fi-file-previous_cdl';
-    }
+  //   if (isCDL && input.type === 'file') {
+  //     input.required = input.name !== 'fi-file-previous_cdl';
+  //   }
   });
 
   ownerSection.querySelectorAll('input, select').forEach(input => {
     input.disabled = !isOwner;
     input.required = false;
 
-    if (isOwner && input.type === 'file') {
-      input.required = input.name !== 'fi-file-previous_cdl';
-    }
+    // if (isOwner && input.type === 'file') {
+    //   input.required = input.name !== 'fi-file-previous_cdl';
+    // }
   });
 }
 
