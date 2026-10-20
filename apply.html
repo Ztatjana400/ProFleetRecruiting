@@ -797,16 +797,20 @@
 
               <h2>CDL Documents</h2>
               <label>Upload CDL (front)</label>
-              <input type="file" name="fi-file-cdl_front" accept=".pdf,.doc,.docx,.jpg,.png">
+<input type="file" name="fi-file-cdl_front"
+       accept=".pdf,.doc,.docx,.jpg,.png">
 
-              <label>Upload CDL (back)</label>
-              <input type="file" name="fi-file-cdl_back" accept=".pdf,.doc,.docx,.jpg,.png">
+<label>Upload CDL (back)</label>
+<input type="file" name="fi-file-cdl_back"
+       accept=".pdf,.doc,.docx,.jpg,.png">
 
-              <label>Upload Previous CDL (if applicable)</label>
-              <input type="file" name="fi-file-previous_cdl" accept=".pdf,.doc,.docx,.jpg,.png">
+<label>Upload Previous CDL (if your current CDL is issued within 3 years)</label>
+<input type="file" name="fi-file-previous_cdl"
+       accept=".pdf,.doc,.docx,.jpg,.png">
 
-              <label>Upload Current Medical Card</label>
-              <input type="file" name="fi-file-medical_card" accept=".pdf,.doc,.docx,.jpg,.png">
+<label>Upload Current Medical Card</label>
+<input type="file" name="fi-file-medical_card"
+       accept=".pdf,.doc,.docx,.jpg,.png">
 
               <h2>Banking Information</h2>
               <label>Do you have a business checking account?</label>
@@ -924,17 +928,20 @@
               </div>
 
               <h2>Documents</h2>
-              <label>Upload CDL (front)</label>
-              <input type="file" name="fi-file-cdl_front" accept=".pdf,.doc,.docx,.jpg,.png">
+<input type="file" name="fi-file-cdl_front"
+       accept=".pdf,.doc,.docx,.jpg,.png">
 
-              <label>Upload CDL (back)</label>
-              <input type="file" name="fi-file-cdl_back" accept=".pdf,.doc,.docx,.jpg,.png">
+<label>Upload CDL (back)</label>
+<input type="file" name="fi-file-cdl_back"
+       accept=".pdf,.doc,.docx,.jpg,.png">
 
-              <label>Upload Previous CDL (if applicable)</label>
-              <input type="file" name="fi-file-previous_cdl" accept=".pdf,.doc,.docx,.jpg,.png">
+<label>Upload Previous CDL (if your current CDL is issued within 3 years)</label>
+<input type="file" name="fi-file-previous_cdl"
+       accept=".pdf,.doc,.docx,.jpg,.png">
 
-              <label>Upload Current Medical Card</label>
-              <input type="file" name="fi-file-medical_card" accept=".pdf,.doc,.docx,.jpg,.png">
+<label>Upload Current Medical Card</label>
+<input type="file" name="fi-file-medical_card"
+       accept=".pdf,.doc,.docx,.jpg,.png">
 
               <h2>Business Information</h2>
               <input type="text" name="company_name" placeholder="Company / DBA Name">
@@ -1023,54 +1030,95 @@
       // =============================
       // CONDITIONAL FORM LOGIC
       // =============================
-      const positionSelect = document.getElementById('position');
-      const cdlSection = document.getElementById('cdl-section');
-      const ownerSection = document.getElementById('owner-section');
+  
 
-      positionSelect.addEventListener('change', function() {
-        const value = this.value;
+const positionSelect = document.getElementById('position');
+const cdlSection = document.getElementById('cdl-section');
+const ownerSection = document.getElementById('owner-section');
 
-        // Hide both sections first
-        cdlSection.classList.remove('visible');
-        ownerSection.classList.remove('visible');
+function updateApplicationSections() {
+  const position = positionSelect.value;
 
-        // Small delay for smooth transition
-        setTimeout(() => {
-          if (value === 'CDL Driver') {
-            cdlSection.classList.add('visible');
-            // Make CDL file fields required when visible
-            cdlSection.querySelectorAll('input[type="file"]').forEach(input => {
-              if (input.name !== 'previous_cdl') {
-                input.setAttribute('required', '');
-              }
-            });
-            // Remove required from owner operator fields
-            ownerSection.querySelectorAll('input, select').forEach(input => {
-              input.removeAttribute('required');
-            });
-          } else if (value === 'Owner Operator') {
-            ownerSection.classList.add('visible');
-            // Make owner operator fields required
-            ownerSection.querySelectorAll('input, select').forEach(input => {
-              if (input.placeholder && !input.placeholder.includes('if applicable') && !input.placeholder.includes('MC')) {
-                input.setAttribute('required', '');
-              }
-            });
-            // Remove required from CDL fields
-            cdlSection.querySelectorAll('input, select').forEach(input => {
-              input.removeAttribute('required');
-            });
-          } else {
-            // No selection - remove all required from conditional fields
-            cdlSection.querySelectorAll('input, select').forEach(input => {
-              input.removeAttribute('required');
-            });
-            ownerSection.querySelectorAll('input, select').forEach(input => {
-              input.removeAttribute('required');
-            });
-          }
-        }, 50);
-      });
+  const isCDL = position === 'CDL Driver';
+  const isOwner = position === 'Owner Operator';
+
+  cdlSection.classList.toggle('visible', isCDL);
+  ownerSection.classList.toggle('visible', isOwner);
+
+  // Disable inactive fields
+  cdlSection.querySelectorAll('input, select').forEach(input => {
+    input.disabled = !isCDL;
+    input.required = false;
+
+    if (isCDL && input.type === 'file') {
+      input.required = input.name !== 'fi-file-previous_cdl';
+    }
+  });
+
+  ownerSection.querySelectorAll('input, select').forEach(input => {
+    input.disabled = !isOwner;
+    input.required = false;
+
+    if (isOwner && input.type === 'file') {
+      input.required = input.name !== 'fi-file-previous_cdl';
+    }
+  });
+}
+
+positionSelect.addEventListener(
+  'change',
+  updateApplicationSections
+);
+
+updateApplicationSections();
+      // const positionSelect = document.getElementById('position');
+      // const cdlSection = document.getElementById('cdl-section');
+      // const ownerSection = document.getElementById('owner-section');
+
+      // positionSelect.addEventListener('change', function() {
+      //   const value = this.value;
+
+      //   // Hide both sections first
+      //   cdlSection.classList.remove('visible');
+      //   ownerSection.classList.remove('visible');
+
+      //   // Small delay for smooth transition
+      //   setTimeout(() => {
+      //     if (value === 'CDL Driver') {
+      //       cdlSection.classList.add('visible');
+      //       // Make CDL file fields required when visible
+      //       cdlSection.querySelectorAll('input[type="file"]').forEach(input => {
+      //         if (input.name !== 'previous_cdl') {
+      //           input.setAttribute('required', '');
+      //         }
+      //       });
+      //       // Remove required from owner operator fields
+      //       ownerSection.querySelectorAll('input, select').forEach(input => {
+      //         input.removeAttribute('required');
+      //       });
+      //     } else if (value === 'Owner Operator') {
+      //       ownerSection.classList.add('visible');
+      //       // Make owner operator fields required
+      //       ownerSection.querySelectorAll('input, select').forEach(input => {
+      //         if (input.placeholder && !input.placeholder.includes('if applicable') && !input.placeholder.includes('MC')) {
+      //           input.setAttribute('required', '');
+      //         }
+      //       });
+      //       // Remove required from CDL fields
+      //       cdlSection.querySelectorAll('input, select').forEach(input => {
+      //         input.removeAttribute('required');
+      //       });
+      //     } else {
+      //       // No selection - remove all required from conditional fields
+      //       cdlSection.querySelectorAll('input, select').forEach(input => {
+      //         input.removeAttribute('required');
+      //       });
+      //       ownerSection.querySelectorAll('input, select').forEach(input => {
+      //         input.removeAttribute('required');
+      //       });
+      //     }
+      //   }, 50);
+      // });
     </script>
   </body>
 </html>
